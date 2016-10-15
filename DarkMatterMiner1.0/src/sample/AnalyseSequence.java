@@ -9,6 +9,7 @@ import static jdk.nashorn.internal.objects.NativeString.indexOf;
 class AnalyseSequence {
     static void analyseSequence(Sequence newSeq, boolean secureRandom){
         setTotalExpectedFrequencies();
+        clearORFindeces();
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
         chiSquare(allPermutationFreqArrays, newSeq);
@@ -95,6 +96,10 @@ class AnalyseSequence {
         }
     }
 
+    private static void clearORFindeces(){
+        orfindeces.clear();
+    }
+
     private static void clearFrameArrays(){
         trinucFreqFrame1Temp.clear();
         trinucFreqFrame2Temp.clear();
@@ -128,9 +133,6 @@ class AnalyseSequence {
             int motifFrameT3 = 0;
             int motifFrameD1 = 0;
             int motifFrameD2 = 0;
-            if(j == 17){
-                System.out.println(unsortedMotifFrequencies.get(j));
-            }
             if(j<64){
                 for(int motifIndex: unsortedMotifFrequencies.get(j)) {
                     frame = motifIndex % 3;
@@ -242,6 +244,7 @@ class AnalyseSequence {
 //        System.out.println(newSeq.getTriBias1());
     }
     private static void getORFLengths(){
-        orfindeces.forEach(System.out::println);
+//        orfindeces.forEach(System.out::println);
+        System.out.println(orfindeces.size()+"\n---------------\n\n\n\n\n\n------------\n\n\n---\n");
     }
 }
