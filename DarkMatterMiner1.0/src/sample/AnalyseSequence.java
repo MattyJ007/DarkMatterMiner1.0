@@ -9,9 +9,11 @@ import static jdk.nashorn.internal.objects.NativeString.indexOf;
 class AnalyseSequence {
     static void analyseSequence(Sequence newSeq, boolean secureRandom){
         System.out.println(newSeq.getName());
+        setCountForObservedORFs();
         setTotalExpectedFrequencies();
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
+
         chiSquare(allPermutationFreqArrays, newSeq);
 
     }
@@ -24,6 +26,12 @@ class AnalyseSequence {
     private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<Integer> longestORFs = new ArrayList<>();
+    private static ArrayList<Integer> observedLongestORFs = new ArrayList<>();
+    private static int countForObservedORFs;
+    private static void setCountForObservedORFs(){
+        countForObservedORFs = 0;
+    }
     private static void setTotalExpectedFrequencies(){
         for (int j = 0; j<64;j++){
             totalExpectedFrequenciesTri[j] = 0;
@@ -256,7 +264,6 @@ class AnalyseSequence {
     private static void getORFLoci(ArrayList<ArrayList<Integer>> orfindeces, int len){
         //** values in arrays indicate the starting loci of stop codons
         int numberOfCodons = len%3;
-        System.out.println(numberOfCodons);
         ArrayList<Integer> stopCodonsFrame1F;
         ArrayList<Integer> stopCodonsFrame2F;
         ArrayList<Integer> stopCodonsFrame3F;
@@ -321,6 +328,38 @@ class AnalyseSequence {
         Collections.sort(stopCodonsFrame1R);
         Collections.sort(stopCodonsFrame2R);
         Collections.sort(stopCodonsFrame3R);
-        System.out.println(stopCodonsFrame1R + " " + stopCodonsFrame2R + " " + stopCodonsFrame3R);
+        getORFLengths(stopCodonsFrame1F, 1);
+        getORFLengths(stopCodonsFrame2F, 2);
+        getORFLengths(stopCodonsFrame3F, 3);
+        getORFLengths(stopCodonsFrame1R, 4);
+        getORFLengths(stopCodonsFrame2R, 5);
+        getORFLengths(stopCodonsFrame3R, 6);
     }
+
+    private static void getORFLengths(ArrayList<Integer> stopCodons, int frame){
+        int tempLocus1;
+        int tempLocus2 = 0;
+        int tempLocus3;
+        int lengthOfORF = 0;
+        int count = 0;
+        for (int loci: stopCodons){
+            tempLocus1 = loci;
+            if(count == 1){
+                tempLocus3 = tempLocus2 - tempLocus1;
+                if(((tempLocus3-3)/3) > lengthOfORF){
+                    lengthOfORF = ((tempLocus3-3)/3);
+                }
+            }
+            else {
+                count = 1;
+            }
+            tempLocus2 = tempLocus1;
+        }
+        longestORFs.add(lengthOfORF);
+        if (countForObservedORFs <6){
+            observedLongestORFs.add(lengthOfORF);
+        }
+        countForObservedORFs ++;
+    }
+
 }
