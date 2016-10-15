@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Getting rid of annoying blue classes">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/AnalyseSequence.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/AnalyseSequence.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gssr.pl.log" afterPath="$PROJECT_DIR$/gssr.pl.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info.log" afterPath="$PROJECT_DIR$/info.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AnalyseSequence.java" afterPath="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java" afterPath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Metagenome.java" afterPath="$PROJECT_DIR$/src/sample/Metagenome.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Sequence.java" afterPath="$PROJECT_DIR$/src/sample/Sequence.java" />
     </list>
@@ -69,11 +72,10 @@
       <file leaf-file-name="DarkMatterMinerUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-477">
-              <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+            <state relative-caret-position="110">
+              <caret line="299" column="40" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
               <folding>
                 <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-                <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
                 <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
                 <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
                 <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -85,38 +87,49 @@
       <file leaf-file-name="Metagenome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="43" column="112" selection-start-line="43" selection-start-column="112" selection-end-line="43" selection-end-column="112" />
+            <state relative-caret-position="76">
+              <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
               <folding>
-                <element signature="e#992#1046#0" expanded="false" />
-                <element signature="e#1514#1577#0" expanded="false" />
-                <element signature="method#runGMAT#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+                <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+                <element signature="e#5074#5128#0" expanded="false" />
+                <element signature="e#5564#5627#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sequence.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sequence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Sequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
+            <state relative-caret-position="170">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="57" selection-end-column="5" />
               <folding>
                 <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
-                <element signature="e#783#864#0" expanded="false" />
-                <element signature="e#1966#1967#0" expanded="true" />
-                <element signature="e#1995#1996#0" expanded="true" />
+                <element signature="e#2022#2023#0" expanded="true" />
+                <element signature="e#2049#2050#0" expanded="true" />
+                <element signature="e#2894#2895#0" expanded="true" />
+                <element signature="e#2936#2937#0" expanded="true" />
+                <element signature="e#2982#2983#0" expanded="true" />
+                <element signature="e#3020#3021#0" expanded="true" />
+                <element signature="e#3066#3067#0" expanded="true" />
+                <element signature="e#3104#3105#0" expanded="true" />
+                <element signature="e#3150#3151#0" expanded="true" />
+                <element signature="e#3188#3189#0" expanded="true" />
+                <element signature="e#3232#3233#0" expanded="true" />
+                <element signature="e#3268#3269#0" expanded="true" />
+                <element signature="e#3312#3313#0" expanded="true" />
+                <element signature="e#3348#3349#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnalyseSequence.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AnalyseSequence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/AnalyseSequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="248" column="75" selection-start-line="248" selection-start-column="75" selection-end-line="248" selection-end-column="75" />
+            <state relative-caret-position="253">
+              <caret line="323" column="98" selection-start-line="323" selection-start-column="98" selection-end-line="323" selection-end-column="98" />
               <folding>
                 <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
@@ -124,8 +137,11 @@
                 <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#countMatches#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="method#getMotifPValues#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="e#11875#11922#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -161,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/sample/MotifBias.java" />
         <option value="$PROJECT_DIR$/src/sample/Metagenome.java" />
         <option value="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
         <option value="$PROJECT_DIR$/src/sample/Sequence.java" />
+        <option value="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
       </list>
     </option>
   </component>
@@ -178,9 +194,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1378" />
-    <option name="height" value="780" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -538,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476501293534</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Code more readable">
+      <created>1476536154509</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1476536154509</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -554,26 +577,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1378" height="780" extended-state="0" />
+    <frame x="-7" y="0" width="1378" height="775" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33950618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3421462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15250379" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40030676" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968896" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -586,7 +610,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -607,17 +630,17 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40030676" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33950618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33950618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15250379" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15250379" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -634,11 +657,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Getting rid of annoying blue classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Getting rid of annoying blue classes" />
+    <MESSAGE value="Code more readable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code more readable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -653,7 +677,6 @@
           <caret line="371" column="32" selection-start-line="371" selection-start-column="32" selection-end-line="371" selection-end-column="32" />
           <folding>
             <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -666,10 +689,10 @@
         <state relative-caret-position="102">
           <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding>
-            <element signature="e#992#1046#0" expanded="false" />
-            <element signature="e#1514#1577#0" expanded="false" />
-            <element signature="method#runGMAT#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="e#5074#5128#0" expanded="false" />
+            <element signature="e#5564#5627#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -680,9 +703,20 @@
           <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
-            <element signature="e#783#864#0" expanded="false" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3104#3105#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3188#3189#0" expanded="true" />
+            <element signature="e#3232#3233#0" expanded="true" />
+            <element signature="e#3268#3269#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -698,8 +732,11 @@
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#countMatches#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getMotifPValues#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="e#11875#11922#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -710,7 +747,6 @@
           <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
           <folding>
             <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -723,10 +759,10 @@
         <state relative-caret-position="493">
           <caret line="34" column="63" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
           <folding>
-            <element signature="e#992#1046#0" expanded="false" />
-            <element signature="e#1514#1577#0" expanded="false" />
-            <element signature="method#runGMAT#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="e#5074#5128#0" expanded="false" />
+            <element signature="e#5564#5627#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -737,9 +773,20 @@
           <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
-            <element signature="e#783#864#0" expanded="false" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3104#3105#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3188#3189#0" expanded="true" />
+            <element signature="e#3232#3233#0" expanded="true" />
+            <element signature="e#3268#3269#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -755,8 +802,11 @@
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#countMatches#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getMotifPValues#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="e#11875#11922#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -767,7 +817,6 @@
           <caret line="368" column="61" selection-start-line="368" selection-start-column="61" selection-end-line="368" selection-end-column="61" />
           <folding>
             <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -780,10 +829,10 @@
         <state relative-caret-position="2533">
           <caret line="154" column="13" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
           <folding>
-            <element signature="e#992#1046#0" expanded="false" />
-            <element signature="e#1514#1577#0" expanded="false" />
-            <element signature="method#runGMAT#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="e#5074#5128#0" expanded="false" />
+            <element signature="e#5564#5627#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -794,9 +843,20 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
-            <element signature="e#783#864#0" expanded="false" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3104#3105#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3188#3189#0" expanded="true" />
+            <element signature="e#3232#3233#0" expanded="true" />
+            <element signature="e#3268#3269#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,7 +867,6 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -852,24 +911,23 @@
     <entry file="file://$PROJECT_DIR$/src/sample/MotifBias.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="43" column="112" selection-start-line="43" selection-start-column="112" selection-end-line="43" selection-end-column="112" />
+        <state relative-caret-position="76">
+          <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
           <folding>
-            <element signature="e#992#1046#0" expanded="false" />
-            <element signature="e#1514#1577#0" expanded="false" />
-            <element signature="method#runGMAT#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="e#5074#5128#0" expanded="false" />
+            <element signature="e#5564#5627#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-477">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+        <state relative-caret-position="110">
+          <caret line="299" column="40" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
           <folding>
             <element signature="method#start#0;class#DarkMatterMinerUI#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#perlAndGMAToInstalled#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
             <element signature="method#run#0;class#RunClass#0;class#DarkMatterMinerUI#0" expanded="false" />
@@ -877,10 +935,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Sequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
+            <element signature="e#2022#2023#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2894#2895#0" expanded="true" />
+            <element signature="e#2936#2937#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3020#3021#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3104#3105#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3188#3189#0" expanded="true" />
+            <element signature="e#3232#3233#0" expanded="true" />
+            <element signature="e#3268#3269#0" expanded="true" />
+            <element signature="e#3312#3313#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AnalyseSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="248" column="75" selection-start-line="248" selection-start-column="75" selection-end-line="248" selection-end-column="75" />
+        <state relative-caret-position="253">
+          <caret line="323" column="98" selection-start-line="323" selection-start-column="98" selection-end-line="323" selection-end-column="98" />
           <folding>
             <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
@@ -888,21 +970,11 @@
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#countMatches#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Sequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
-          <folding>
-            <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
-            <element signature="e#783#864#0" expanded="false" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="method#getMotifPValues#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="e#11875#11922#0" expanded="false" />
           </folding>
         </state>
       </provider>

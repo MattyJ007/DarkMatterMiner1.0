@@ -1,18 +1,17 @@
 package sample;
-
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
 import static jdk.nashorn.internal.objects.NativeString.indexOf;
 class AnalyseSequence {
     static void analyseSequence(Sequence newSeq, boolean secureRandom){
+        System.out.println(newSeq.getName());
         setTotalExpectedFrequencies();
-        clearORFindeces();
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
-        getORFLengths();
         chiSquare(allPermutationFreqArrays, newSeq);
 
     }
@@ -25,8 +24,6 @@ class AnalyseSequence {
     private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
-
     private static void setTotalExpectedFrequencies(){
         for (int j = 0; j<64;j++){
             totalExpectedFrequenciesTri[j] = 0;
@@ -35,11 +32,6 @@ class AnalyseSequence {
             totalExpectedFrequenciesDi[j] = 0;
         }
     }
-
-    private static void clearORFindeces(){
-        orfindeces.clear();
-    }
-
     private static void clearFrameArrays(){
         trinucFreqFrame1Temp.clear();
         trinucFreqFrame2Temp.clear();
@@ -47,11 +39,13 @@ class AnalyseSequence {
         dinucFreqFrame1Temp.clear();
         dinucFreqFrame2Temp.clear();
     }
-    //** gets GC content of each sequence
+
     private static double gCcount(String seq){
+        //** gets GC content of each sequence
         int countGC = countMatches(seq, "G") + countMatches(seq, "C");
         return (double)countGC/seq.length();
     }
+
     private static int countMatches(String str, String sub) {
         if (str.isEmpty() || sub.isEmpty()) {return -1;}
         int count = 0;
@@ -62,6 +56,7 @@ class AnalyseSequence {
         }
         return count;
     }
+
     private static void generatePermutations(String seqLine, boolean secureRandom){
         int permutations = DarkMatterMinerUI.getPermutations();
         SecureRandom sRand;
@@ -106,8 +101,10 @@ class AnalyseSequence {
             }
         }
     }
+
     private static void getFrequency(String seq){
         clearFrameArrays();
+        ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
         ArrayList<ArrayList<Integer>> unsortedMotifFrequencies = new ArrayList<>();
         String motifString = "AAA,AAT,AAG,AAC,ATA,ATT,ATG,ATC,AGA,AGT,AGG,AGC,ACA,ACT,ACG,ACC,TAA,TAT,TAG,TAC,TTA,TTT,TTG,TTC,TGA,TGT,TGG,TGC,TCA,TCT,TCG,TCC,GAA,GAT,GAG,GAC,GTA,GTT,GTG,GTC,GGA,GGT,GGG,GGC,GCA,GCT,GCG,GCC,CAA,CAT,CAG,CAC,CTA,CTT,CTG,CTC,CGA,CGT,CGG,CGC,CCA,CCT,CCG,CCC,AA,AT,AG,AC,TA,TT,TG,TC,GA,GT,GG,GC,CA,CT,CG,CC";
         Integer[] stopCodons = {16,18,20,24,28,52};
@@ -124,8 +121,10 @@ class AnalyseSequence {
         for (int d: stopCodons){
             orfindeces.add(unsortedMotifFrequencies.get(d));
         }
+        getORFLoci(orfindeces, seq.length());
         sortFrequenciesIntoFrames(unsortedMotifFrequencies);
     }
+
     private static void sortFrequenciesIntoFrames(ArrayList<ArrayList<Integer>> unsortedMotifFrequencies){
         int frame;
         for (int j = 0; j<80; j++){
@@ -182,6 +181,7 @@ class AnalyseSequence {
         allPermutationFreqArrays.add(dinucFreqFrame1);
         allPermutationFreqArrays.add(dinucFreqFrame2);
     }
+
     private static void chiSquare( ArrayList<ArrayList<Integer>> observedArrays, Sequence newSeq){
         double exp;
         int count = 0;
@@ -225,27 +225,102 @@ class AnalyseSequence {
         }
         Collections.sort(expectedChiValuesT);
         Collections.sort(expectedChiValuesD);
+        getMotifPValues(observedChiValuesD, observedChiValuesT,expectedChiValuesD,expectedChiValuesT, newSeq);
+    }
 
+    private static void getMotifPValues(ArrayList<Double> observedChiValuesD, ArrayList<Double> observedChiValuesT, ArrayList<Double> expectedChiValuesD, ArrayList<Double> expectedChiValuesT, Sequence newSeq){
+        newSeq.setDinuc1((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size()));
+        newSeq.setDinuc2((1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size()));
         if ((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size())<(1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size())){
             newSeq.setDinucleotidePvalue((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size()));
         }
         else {
             newSeq.setDinucleotidePvalue((1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size()));
         }
+        newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(0))/(double) expectedChiValuesT.size()));
+        newSeq.setTrinuc1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(0))/(double) expectedChiValuesT.size()));
 
-        newSeq.setTriBias1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(0))/(double) expectedChiValuesT.size()));
-        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()) < newSeq.getTriBias1()){
-            newSeq.setTriBias1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()));
+        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()) < newSeq.getTrinucelotidePValue()){
+            newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()));
         }
-        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()) < newSeq.getTriBias1()){
-            newSeq.setTriBias1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
+        newSeq.setTrinuc2((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()));
+        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()) < newSeq.getTrinucelotidePValue()){
+            newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
         }
+        newSeq.setTrinuc3((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
 //        System.out.println(newSeq.getName());
 //        System.out.println(newSeq.getDinucleotidePValue());
-//        System.out.println(newSeq.getTriBias1());
+//        System.out.println(newSeq.getTrinucelotidePValue());
     }
-    private static void getORFLengths(){
-//        orfindeces.forEach(System.out::println);
-        System.out.println(orfindeces.size()+"\n------------------------------\n");
+
+    private static void getORFLoci(ArrayList<ArrayList<Integer>> orfindeces, int len){
+        //** values in arrays indicate the starting loci of stop codons
+        int numberOfCodons = len%3;
+        System.out.println(numberOfCodons);
+        ArrayList<Integer> stopCodonsFrame1F;
+        ArrayList<Integer> stopCodonsFrame2F;
+        ArrayList<Integer> stopCodonsFrame3F;
+        ArrayList<Integer> stopCodonsFrame1R;
+        ArrayList<Integer> stopCodonsFrame2R;
+        ArrayList<Integer> stopCodonsFrame3R;
+        if (numberOfCodons == 0) {
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3,len));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2,len-2));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1,len-1));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3,len));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2,len-2));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1,len-1));
+        }
+        else if(numberOfCodons ==1){
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3, len-1));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2, len));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1, len-2));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3, len-1));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2, len));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1, len-2));
+        }
+        else{
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3, len-2));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2, len-1));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1, len));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3, len-2));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2, len-1));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1, len));
+        }
+        int frame;
+        for(int c = 0; c<6; c++){
+            for (int locus: orfindeces.get(c)){
+                frame = locus%3;
+                if (c <3 ){
+                    if (frame == 0){
+                        stopCodonsFrame1F.add(locus);
+                    }
+                    else if (frame == 1) {
+                        stopCodonsFrame2F.add(locus);
+                    }
+                    else {
+                        stopCodonsFrame3F.add(locus);
+                    }
+                }
+                else {
+                    if (frame == 0){
+                        stopCodonsFrame1R.add(locus);
+                    }
+                    else if (frame == 1) {
+                        stopCodonsFrame2R.add(locus);
+                    }
+                    else {
+                        stopCodonsFrame3R.add(locus);
+                    }
+                }
+            }
+        }
+        Collections.sort(stopCodonsFrame1F);
+        Collections.sort(stopCodonsFrame2F);
+        Collections.sort(stopCodonsFrame3F);
+        Collections.sort(stopCodonsFrame1R);
+        Collections.sort(stopCodonsFrame2R);
+        Collections.sort(stopCodonsFrame3R);
+        System.out.println(stopCodonsFrame1R + " " + stopCodonsFrame2R + " " + stopCodonsFrame3R);
     }
 }

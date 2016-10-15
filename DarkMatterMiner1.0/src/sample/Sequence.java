@@ -4,7 +4,7 @@ class Sequence {
     //** Attributes of sequence
     private String name, rawSeq,translatedAA, microsatelliteMotif;
     private int length, rank, numSSRrepeats, sSRstartloci;
-    private double gcContent, dinucleotidePValue, triBias1,triBias2,triBias3;
+    private double gcContent, dinucleotidePValue, trinucelotidePValue, trinuc1, trinuc2, trinuc3, dinuc1, dinuc2;
     //**Only best p-values will be kept at the end
     private double orfLenP1 = 1;
     private double orfLenP2 = 1;
@@ -12,11 +12,10 @@ class Sequence {
     private double orfLenP4 = 1;
     private double orfLenP5 = 1;
     private double orfLenP6 = 1;
-    private boolean microsatellite;
+//    private boolean microsatellite;
 
-
-        //** initialises Sequence objects with basic information before statistical analysis
     Sequence(String name, String raw, int len){
+        //** initialises Sequence objects with basic information before statistical analysis
         this.name = name;
         rawSeq = raw;
         length = len;
@@ -36,19 +35,21 @@ class Sequence {
 //        orfLenP4 = o4;
 //        orfLenP5 = o5;
 //        orfLenP6 = o6;
-//        triBias1 = t1;
+//        trinucelotidePValue = t1;
 //        triBias2 = t2;
 //        triBias3 = t3;
 //    }
 
         //** method used when writing csv file
-//    public String getSequence(){
-//        return (name + "," + length + "," + gcContent + "," +
-//                dinucleotidePValue+ "," + diNucP2+ "," +diNucP3+ "," +
-//                orfLenP1+ "," +orfLenP2+ "," + orfLenP3+ "," +
-//                orfLenP4+ "," +orfLenP5+ "," +orfLenP6+ "," +
-//                triBias1+ "," +triBias2+ "," +triBias3);
-//    }
+    public String getSequence(){
+        return (name + "\t" + length + "\t" + gcContent + "\t" +
+                orfLenP1+ "\t" +orfLenP2+ "\t" + orfLenP3+ "\t" +
+                orfLenP4+ "\t" +orfLenP5+ "\t" +orfLenP6+ "\t" +
+                trinucelotidePValue+ "\t"  +
+                trinuc1+ "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
+                dinucleotidePValue+ "\t" +
+                dinuc1+ "\t"  +dinuc2);
+    }
 
 
     //** Getters and setters of variables
@@ -60,48 +61,67 @@ class Sequence {
         return rawSeq;
     }
 
-    public void setRawSeq(String rawSeq) {
-        this.rawSeq = rawSeq;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setMicrosatellite(boolean microsatellite) {
-        this.microsatellite = microsatellite;
-    }
-
-    public void setTranslatedAA(String translatedAA) {
-        this.translatedAA = translatedAA;
-    }
-
-    public void setMicrosatelliteMotif(String microsatelliteMotif) {
-        this.microsatelliteMotif = microsatelliteMotif;
-    }
-
-    public void setNumSSRrepeats(int numSSRrepeats) {
-        this.numSSRrepeats = numSSRrepeats;
-    }
-
-    public void setsSRstartloci(int sSRstartloci) {
-        this.sSRstartloci = sSRstartloci;
-    }
+//    public void setRawSeq(String rawSeq) {
+//        this.rawSeq = rawSeq;
+//    }
+//
+//    public int getLength() {
+//        return length;
+//    }
+//
+//    public void setMicrosatellite(boolean microsatellite) {
+//        this.microsatellite = microsatellite;
+//    }
+//
+//    public void setTranslatedAA(String translatedAA) {
+//        this.translatedAA = translatedAA;
+//    }
+//
+//    public void setMicrosatelliteMotif(String microsatelliteMotif) {
+//        this.microsatelliteMotif = microsatelliteMotif;
+//    }
+//
+//    public void setNumSSRrepeats(int numSSRrepeats) {
+//        this.numSSRrepeats = numSSRrepeats;
+//    }
+//
+//    public void setsSRstartloci(int sSRstartloci) {
+//        this.sSRstartloci = sSRstartloci;
+//    }
     void setGcContent(double gcContent) {
         this.gcContent = gcContent;
     }
 
-    public int getRank() {
-        return rank;
+    public void setTrinuc1(double trinuc1) {
+        this.trinuc1 = trinuc1;
     }
 
-    public double getGcContent() {
-        return gcContent;
+    public void setTrinuc2(double trinuc2) {
+        this.trinuc2 = trinuc2;
     }
 
-    public double getDinucleotidePValue() {
-        return dinucleotidePValue;
+    public void setTrinuc3(double trinuc3) {
+        this.trinuc3 = trinuc3;
     }
+
+    public void setDinuc1(double dinuc1) {
+        this.dinuc1 = dinuc1;
+    }
+
+    public void setDinuc2(double dinuc2) {
+        this.dinuc2 = dinuc2;
+    }
+    //    public int getRank() {
+//        return rank;
+//    }
+//
+//    public double getGcContent() {
+//        return gcContent;
+//    }
+//
+//    public double getDinucleotidePValue() {
+//        return dinucleotidePValue;
+//    }
 
     public double getOrfLenP1() {
         return orfLenP1;
@@ -127,32 +147,16 @@ class Sequence {
         return orfLenP6;
     }
 
-    double getTriBias1() {
-        return triBias1;
+    double getTrinucelotidePValue() {
+        return trinucelotidePValue;
     }
 
-    public double getTriBias2() {
-        return triBias2;
-    }
+//    public void setRank(int rank) {
+//        this.rank = rank;
+//    }
 
-    public double getTriBias3() {
-        return triBias3;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
-    void setTriBias1(double triBias1) {
-        this.triBias1 = triBias1;
-    }
-
-    public void setTriBias2(double triBias2) {
-        this.triBias2 = triBias2;
-    }
-
-    public void setTriBias3(double triBias3) {
-        this.triBias3 = triBias3;
+    void setTrinucelotidePValue(double trinucelotidePValue) {
+        this.trinucelotidePValue = trinucelotidePValue;
     }
 
     void setDinucleotidePvalue(double dinucleotidePValue) {

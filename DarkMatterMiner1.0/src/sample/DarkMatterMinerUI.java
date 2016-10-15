@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 public class DarkMatterMinerUI extends Application {
     private static boolean start; //** variable that prevents launching Metagenome if User settings aren't correct
     private static boolean secureRandom; //** Allows user to use either Random() or SecureRandom()
-    private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
+//    private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
     private static int motifRepeats = 4;
     private static int permutations = 1000;
     private static int minMotifLen = 2;
@@ -44,13 +44,13 @@ public class DarkMatterMinerUI extends Application {
         DarkMatterMinerUI.secureRandom = secureRandom;
     }
 
-    private static double getTopResults() {
-        return topResults;
-    }
+//    private static double getTopResults() {
+//        return topResults;
+//    }
 
-    private static void setTopResults(double topResults) {
-        DarkMatterMinerUI.topResults = topResults;
-    }
+//    private static void setTopResults(double topResults) {
+//        DarkMatterMinerUI.topResults = topResults;
+//    }
 
     static int getMotifRepeats() {
         return motifRepeats;
@@ -297,7 +297,7 @@ public class DarkMatterMinerUI extends Application {
             setMotifRepeats(ssrRep);
             setPermutations(perm);
             setIgnoreShortSeq(ignored);
-            setTopResults(topResults);
+//            setTopResults(topResults);
             return perlAndGMAToInstalled();
         }
         catch (Exception e){

@@ -1,16 +1,12 @@
 package sample;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
 class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
-
     static void create(String inOutFolder, boolean secureRandom){
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
@@ -19,39 +15,16 @@ class Metagenome {
             //** inputs fas and fasta files into gmato. prevents other files being submitted accidently
             if (j.getName().substring(j.getName().length()-4).equals(".fas") || j.getName().substring(j.getName().length()-4).equals("asta")) {
                 //** java running perl through command line to run GMATo
-                runGMAT(j);
+                runGMATo(j);
+                removeSSRs(j);
 //                String seqName = "";
-                try {
-                    //** Counts number of seqs in file for progress output
-//                    int lineCount = 0;
-//                    int totSeqNum = sequences.size();
-                    //** Not necessary - just useful to see progress
-
-//                    String seqTot;
-                    //** Iterates through all valid sequences
-                    for (Sequence newSequence:sequences) {
-//                        Variables.resetDistancesList();
-                        AnalyseSequence.analyseSequence(newSequence, secureRandom);
-////                        OrfPValue.pValueMaker(newSequence);
-//                        lineCount++;
-//                        System.out.println(lineCount+"/"+totSeqNum+"\n------");
-//                    }
-//                    SortSeqs.bigSort();
-//                    OutputPotentialDarkMatterFas.writeOutSeqs(j);
-//                    if (Variables.isCsv() == true){
-//                        WriteCsv.file(j);
-                    }
-                    //** clears sequences of previous file - therefore new file starts with unassigned variable.
-                    sequences.clear();
-                }
-                catch (Exception e){
-                    System.out.println(e.getMessage()+"\n^^^^^^ Metagenome");
-                }
+                getData(secureRandom);
+                outputData(j);
+                sequences.clear();
             }
         }
     }
-
-    private static void runGMAT(File input){
+    private static void runGMATo(File input){
         String i = input.getAbsolutePath();
         //** GMATo settings
         String que = "Running statement: \n -r " + DarkMatterMinerUI.getMotifRepeats() + " -m " + DarkMatterMinerUI.getMinMotifLen() + " -x " + DarkMatterMinerUI.getMaxMotifLen() + " -s " + 0 + " -i " + i;
@@ -61,8 +34,8 @@ class Metagenome {
         String os = pp.getProperty("os.name");
         if ((os.startsWith("win")) || (os.startsWith("Win")))
         {
-            String winfilepath = System.getProperty("user.dir");
-            System.out.println("\nFile path:\n" + winfilepath + "\n");
+//            String winfilepath = System.getProperty("user.dir");
+//            System.out.println("\nFile path:\n" + winfilepath + "\n");
             try
             {
                 String wincmd = "perl gmat.pl " + que;
@@ -70,12 +43,11 @@ class Metagenome {
                 Process winproc = Runtime.getRuntime().exec("cmd /c" + wincmd);
                 if (winproc != null)
                 {
-                    System.out.println("\nProgram starts running...\n\n");
+//                    System.out.println("\nProgram starts running...\n\n");
                     winproc.waitFor();
                     String winline;
                     //** Streams command line output to java console
                     bufreader = new BufferedReader(new InputStreamReader(winproc.getInputStream(), "GB2312"));
-                    System.out.println(bufreader.readLine());
                     while (((winline = bufreader.readLine()) != null))
                     {
                         System.out.println(winline + "\n");
@@ -83,18 +55,17 @@ class Metagenome {
                 }
                 else
                 {
-                    System.out.println("Program is finished?!");
+                    System.out.println("Program is finished?! ------ Something is funny in GMATo");
                 }
             }
             catch (Exception e)
             {
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage() + "runGMATo");
             }
         }
-        removeSSRs(input);
     }
-    //** SSRs found by GMATo are removed
     private static void removeSSRs(File input){
+        //** SSRs found by GMATo are removed
         try(
                 FileReader fRead = new FileReader(input+".ssr");
                 BufferedReader bRead = new BufferedReader(fRead);
@@ -150,5 +121,62 @@ class Metagenome {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+    }
+    private static void getData(boolean secureRandom){
+        try {
+            //** Counts number of seqs in file for progress output
+//                    int lineCount = 0;
+//                    int totSeqNum = sequences.size();
+            //** Not necessary - just useful to see progress
+
+//                    String seqTot;
+            //** Iterates through all valid sequences
+            for (Sequence newSequence:sequences) {
+//                        Variables.resetDistancesList();
+                AnalyseSequence.analyseSequence(newSequence, secureRandom);
+////                        OrfPValue.pValueMaker(newSequence);
+//                        lineCount++;
+//                        System.out.println(lineCount+"/"+totSeqNum+"\n------");
+//                    }
+//                    SortSeqs.bigSort();
+//                    OutputPotentialDarkMatterFas.writeOutSeqs(j);
+//                    if (Variables.isCsv() == true){
+//                        WriteCsv.file(j);
+            }
+            //** clears sequences of previous file - therefore new file starts with unassigned variable.
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage()+"\n^^^^^^ Metagenome getData");
+        }
+    }
+    private static void outputData(File input){
+        String labelString = "Sequence Name\t" +
+                "Length of Sequence\t" +
+                "GC content\t"+
+                "p-value of ORF lengths frame 1\t" +
+                "p-value of ORF lengths frame 2\t" +
+                "p-value of ORF lengths frame 3\t" +
+                "p-value of ORF lengths frame 4\t" +
+                "p-value of ORF lengths frame 5\t" +
+                "p-value of ORF lengths frame 6\t" +
+                "best Trinuc P-value\t"+
+                "trinucPvalue Frame 1\t"+
+                "trinucPvalue Frame 2\t"+
+                "trinucPvalue Frame 3\t"+
+                "best dinuc P-value\t" +
+                "dinucPvalue Frame 1\t"+
+                "dinucPvalue Frame 2"+
+                "\n";
+        try (FileWriter writer = new FileWriter(input+"_ADM.csv")) {
+            writer.write(labelString);
+            for (Sequence seq: sequences){
+                System.out.println(seq.getTrinucelotidePValue());
+                writer.write(seq.getSequence()+"\n");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage() + " - - - - - outputData");
+        }
+
     }
 }
