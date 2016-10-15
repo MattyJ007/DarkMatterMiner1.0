@@ -18,7 +18,7 @@ import java.io.InputStreamReader;
 public class DarkMatterMinerUI extends Application {
     private static boolean start; //** variable that prevents launching Metagenome if User settings aren't correct
     private static boolean secureRandom; //** Allows user to use either Random() or SecureRandom()
-//    private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
+    private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
     private static int motifRepeats = 4;
     private static int permutations = 1000;
     private static int minMotifLen = 2;
@@ -44,13 +44,13 @@ public class DarkMatterMinerUI extends Application {
         DarkMatterMinerUI.secureRandom = secureRandom;
     }
 
-//    private static double getTopResults() {
-//        return topResults;
-//    }
+    static double getTopResults() {
+        return topResults;
+    }
 
-//    private static void setTopResults(double topResults) {
-//        DarkMatterMinerUI.topResults = topResults;
-//    }
+    private static void setTopResults(double topResults) {
+        DarkMatterMinerUI.topResults = topResults;
+    }
 
     static int getMotifRepeats() {
         return motifRepeats;
@@ -271,19 +271,19 @@ public class DarkMatterMinerUI extends Application {
             int ssrRep = Integer.parseInt(sSRrep);
             int ignored = Integer.parseInt(ignoreSeqs);
             double topResults = Double.parseDouble(topPercentage);
-            if (perm <= 50){
+            if (perm < 50){
                 return "Permutation value too low";
             }
-            if (minSSR1 <= 1){
+            if (minSSR1 < 1){
                 return "Min SSR length value too low";
             }
             if (maxSSR1 <= minSSR1){
                 return "Max SSR length too low";
             }
-            if (ssrRep <=2){
+            if (ssrRep <2){
                 return "SSR repeat value too low";
             }
-            if (ignored <= 20){
+            if (ignored < 20){
                 return "Ignored value too low";
             }
             if (topResults >= 1 || topResults <= 0){
@@ -297,7 +297,7 @@ public class DarkMatterMinerUI extends Application {
             setMotifRepeats(ssrRep);
             setPermutations(perm);
             setIgnoreShortSeq(ignored);
-//            setTopResults(topResults);
+            setTopResults(topResults);
             return perlAndGMAToInstalled();
         }
         catch (Exception e){

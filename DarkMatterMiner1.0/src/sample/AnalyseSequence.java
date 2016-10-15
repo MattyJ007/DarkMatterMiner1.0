@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static jdk.nashorn.internal.objects.NativeString.indexOf;
 class AnalyseSequence {
     static void analyseSequence(Sequence newSeq, boolean secureRandom){
-        System.out.println(newSeq.getName());
-        setCountForObservedORFs();
+        resetArrayListsAndCount();
         setTotalExpectedFrequencies();
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
-
-        chiSquare(allPermutationFreqArrays, newSeq);
-
+        chiSquare();
+        getPvalues(newSeq);
     }
-
     private static Integer[] totalExpectedFrequenciesTri = new Integer[64];
     private static Integer[] totalExpectedFrequenciesDi = new Integer[16];
     private static ArrayList<ArrayList<Integer>> allPermutationFreqArrays = new ArrayList<>();
@@ -26,11 +24,22 @@ class AnalyseSequence {
     private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<Double> observedChiValuesT = new ArrayList<>();
+    private static ArrayList<Double> expectedChiValuesT = new ArrayList<>();
+    private static ArrayList<Double> observedChiValuesD = new ArrayList<>();
+    private static ArrayList<Double> expectedChiValuesD = new ArrayList<>();
     private static ArrayList<Integer> longestORFs = new ArrayList<>();
     private static ArrayList<Integer> observedLongestORFs = new ArrayList<>();
     private static int countForObservedORFs;
-    private static void setCountForObservedORFs(){
+
+    private static void resetArrayListsAndCount(){
+        observedChiValuesT.clear();
+        observedChiValuesD.clear();
+        expectedChiValuesT.clear();
+        expectedChiValuesD.clear();
         countForObservedORFs = 0;
+        observedLongestORFs.clear();
+        longestORFs.clear();
     }
     private static void setTotalExpectedFrequencies(){
         for (int j = 0; j<64;j++){
@@ -65,7 +74,7 @@ class AnalyseSequence {
         return count;
     }
 
-    private static void generatePermutations(String seqLine, boolean secureRandom){
+    private static void generatePermutations(String newSeq, boolean secureRandom){
         int permutations = DarkMatterMinerUI.getPermutations();
         SecureRandom sRand;
         Random nRand;
@@ -75,12 +84,12 @@ class AnalyseSequence {
         String temp;
         String randSeq;
         String[] seq;
-        getFrequency(seqLine);
+        getFrequency(newSeq);
         if (secureRandom) {
             sRand = new SecureRandom();
             for (int j = 0; j< permutations; j++){
-                len = seqLine.length();
-                seq = seqLine.split("");
+                len = newSeq.length();
+                seq = newSeq.split("");
                 for (int i=0; i<len; i++){
                     randomNum = sRand.nextInt(len);
                     temp = seq[i];
@@ -95,8 +104,8 @@ class AnalyseSequence {
         else {
             nRand = new Random();
             for (int j = 0; j< permutations; j++){
-                len = seqLine.length();
-                seq = seqLine.split("");
+                len = newSeq.length();
+                seq = newSeq.split("");
                 for (int i=0; i<len; i++){
                     randomNum = nRand.nextInt(len);
                     temp = seq[i];
@@ -190,14 +199,10 @@ class AnalyseSequence {
         allPermutationFreqArrays.add(dinucFreqFrame2);
     }
 
-    private static void chiSquare( ArrayList<ArrayList<Integer>> observedArrays, Sequence newSeq){
+    private static void chiSquare(){
         double exp;
         int count = 0;
-        ArrayList<Double> observedChiValuesT = new ArrayList<>();
-        ArrayList<Double> expectedChiValuesT = new ArrayList<>();
-        ArrayList<Double> observedChiValuesD = new ArrayList<>();
-        ArrayList<Double> expectedChiValuesD = new ArrayList<>();
-        for (ArrayList<Integer> observedArray :observedArrays) {
+        for (ArrayList<Integer> observedArray :allPermutationFreqArrays) {
             double chiT = 0;
             if (observedArray.size() == 64){
                 for(int n = 0; n<64;n++){
@@ -233,32 +238,20 @@ class AnalyseSequence {
         }
         Collections.sort(expectedChiValuesT);
         Collections.sort(expectedChiValuesD);
-        getMotifPValues(observedChiValuesD, observedChiValuesT,expectedChiValuesD,expectedChiValuesT, newSeq);
     }
 
-    private static void getMotifPValues(ArrayList<Double> observedChiValuesD, ArrayList<Double> observedChiValuesT, ArrayList<Double> expectedChiValuesD, ArrayList<Double> expectedChiValuesT, Sequence newSeq){
-        newSeq.setDinuc1((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size()));
-        newSeq.setDinuc2((1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size()));
-        if ((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size())<(1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size())){
-            newSeq.setDinucleotidePvalue((1-expectedChiValuesD.indexOf(observedChiValuesD.get(0))/(double) expectedChiValuesD.size()));
-        }
-        else {
-            newSeq.setDinucleotidePvalue((1-expectedChiValuesD.indexOf(observedChiValuesD.get(1))/(double) expectedChiValuesD.size()));
-        }
-        newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(0))/(double) expectedChiValuesT.size()));
-        newSeq.setTrinuc1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(0))/(double) expectedChiValuesT.size()));
+    private static void getPvalues(Sequence newSeq){
+        ArrayList<Double> orfPValues = new ArrayList<>();
+        Collections.sort(longestORFs);
+        orfPValues.addAll(observedLongestORFs.stream().map(h -> (1 - (longestORFs.indexOf(h) / (double) longestORFs.size()))).collect(Collectors.toList()));
+        newSeq.setOrfPvalues(orfPValues);
 
-        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()) < newSeq.getTrinucelotidePValue()){
-            newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()));
-        }
-        newSeq.setTrinuc2((1-expectedChiValuesT.indexOf(observedChiValuesT.get(1))/(double) expectedChiValuesT.size()));
-        if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()) < newSeq.getTrinucelotidePValue()){
-            newSeq.setTrinucelotidePValue((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
-        }
-        newSeq.setTrinuc3((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
-//        System.out.println(newSeq.getName());
-//        System.out.println(newSeq.getDinucleotidePValue());
-//        System.out.println(newSeq.getTrinucelotidePValue());
+        ArrayList<Double> motifFrequenciesT = new ArrayList<>();
+        ArrayList<Double> motifFrequenciesD = new ArrayList<>();
+        motifFrequenciesT.addAll(observedChiValuesT.stream().map(h -> (1 - (expectedChiValuesT.indexOf(h) / (double) expectedChiValuesT.size()))).collect(Collectors.toList()));
+        motifFrequenciesD.addAll(observedChiValuesD.stream().map(h -> (1 - (expectedChiValuesD.indexOf(h) / (double) expectedChiValuesD.size()))).collect(Collectors.toList()));
+        newSeq.setMotifPValues(motifFrequenciesT, motifFrequenciesD);
+
     }
 
     private static void getORFLoci(ArrayList<ArrayList<Integer>> orfindeces, int len){
@@ -328,38 +321,37 @@ class AnalyseSequence {
         Collections.sort(stopCodonsFrame1R);
         Collections.sort(stopCodonsFrame2R);
         Collections.sort(stopCodonsFrame3R);
-        getORFLengths(stopCodonsFrame1F, 1);
-        getORFLengths(stopCodonsFrame2F, 2);
-        getORFLengths(stopCodonsFrame3F, 3);
-        getORFLengths(stopCodonsFrame1R, 4);
-        getORFLengths(stopCodonsFrame2R, 5);
-        getORFLengths(stopCodonsFrame3R, 6);
+        getORFLengths(stopCodonsFrame1F);
+        getORFLengths(stopCodonsFrame2F);
+        getORFLengths(stopCodonsFrame3F);
+        getORFLengths(stopCodonsFrame1R);
+        getORFLengths(stopCodonsFrame2R);
+        getORFLengths(stopCodonsFrame3R);
     }
 
-    private static void getORFLengths(ArrayList<Integer> stopCodons, int frame){
+    private static void getORFLengths(ArrayList<Integer> stopCodons){
         int tempLocus1;
         int tempLocus2 = 0;
         int tempLocus3;
         int lengthOfORF = 0;
-        int count = 0;
+        boolean prepareTempVariables = false;
         for (int loci: stopCodons){
             tempLocus1 = loci;
-            if(count == 1){
-                tempLocus3 = tempLocus2 - tempLocus1;
+            if(prepareTempVariables){
+                tempLocus3 = tempLocus1 - tempLocus2;
                 if(((tempLocus3-3)/3) > lengthOfORF){
                     lengthOfORF = ((tempLocus3-3)/3);
                 }
             }
             else {
-                count = 1;
+                prepareTempVariables = true;
             }
             tempLocus2 = tempLocus1;
         }
         longestORFs.add(lengthOfORF);
         if (countForObservedORFs <6){
             observedLongestORFs.add(lengthOfORF);
+            countForObservedORFs ++;
         }
-        countForObservedORFs ++;
     }
-
 }

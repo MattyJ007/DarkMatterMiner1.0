@@ -1,17 +1,11 @@
 package sample;
-
+import java.util.ArrayList;
+import java.util.Collections;
 class Sequence {
     //** Attributes of sequence
     private String name, rawSeq,translatedAA, microsatelliteMotif;
-    private int length, rank, numSSRrepeats, sSRstartloci;
-    private double gcContent, dinucleotidePValue, trinucelotidePValue, trinuc1, trinuc2, trinuc3, dinuc1, dinuc2;
-    //**Only best p-values will be kept at the end
-    private double orfLenP1 = 1;
-    private double orfLenP2 = 1;
-    private double orfLenP3 = 1;
-    private double orfLenP4 = 1;
-    private double orfLenP5 = 1;
-    private double orfLenP6 = 1;
+    private int length, rankTri, rankBestORFframeTri,rankDi, rankOrf, rankTot, numSSRrepeats, sSRstartloci,frameWithLongestORF;
+    private double gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
 //    private boolean microsatellite;
 
     Sequence(String name, String raw, int len){
@@ -41,35 +35,65 @@ class Sequence {
 //    }
 
         //** method used when writing csv file
-    public String getSequence(){
+    String getSequence(){
         return (name + "\t" + length + "\t" + gcContent + "\t" +
+                frameWithLongestORF + "\t"+
+                orfLengthPValue + "\t"+ rankOrf + "\t"+
                 orfLenP1+ "\t" +orfLenP2+ "\t" + orfLenP3+ "\t" +
                 orfLenP4+ "\t" +orfLenP5+ "\t" +orfLenP6+ "\t" +
-                trinucelotidePValue+ "\t"  +
+                triNucFreqOfLongestORFframe + "\t"+ rankBestORFframeTri +"\t"+
+                trinucelotidePValue+ "\t"  + rankTri + "\t"+
                 trinuc1+ "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
-                dinucleotidePValue+ "\t" +
-                dinuc1+ "\t"  +dinuc2);
+                dinucleotidePValue+ "\t" + rankDi + "\t"+
+                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot);
+    }
+    String getFasSeqInfo(){
+        return (name+"\n"+rawSeq+"\n");
     }
 
 
     //** Getters and setters of variables
-    public String getName() {
-        return name;
-    }
-
     String getRawSeq() {
         return rawSeq;
     }
 
-//    public void setRawSeq(String rawSeq) {
-//        this.rawSeq = rawSeq;
-//    }
-//
-//    public int getLength() {
-//        return length;
-//    }
-//
-//    public void setMicrosatellite(boolean microsatellite) {
+    double getDinucleotidePValue() {
+        return dinucleotidePValue;
+    }
+
+    double getTrinucelotidePValue() {
+        return trinucelotidePValue;
+    }
+
+    double getOrfLengthPValue() {
+        return orfLengthPValue;
+    }
+
+    void setRankTri(int rankTri) {
+        this.rankTri = rankTri;
+    }
+
+    void setRankBestORFframeTri(int rankBestORFframeTri) {
+        this.rankBestORFframeTri = rankBestORFframeTri;
+    }
+
+    void setRankDi(int rankDi) {
+        this.rankDi = rankDi;
+    }
+
+    void setRankOrf(int rankOrf) {
+        this.rankOrf = rankOrf;
+    }
+
+    void setRankTot() {
+        this.rankTot = rankDi + rankTri + rankOrf;
+    }
+
+    int getRankTot() {
+        return rankTot;
+    }
+
+    //    public void setMicrosatellite(boolean microsatellite) {
 //        this.microsatellite = microsatellite;
 //    }
 //
@@ -91,99 +115,32 @@ class Sequence {
     void setGcContent(double gcContent) {
         this.gcContent = gcContent;
     }
-
-    public void setTrinuc1(double trinuc1) {
-        this.trinuc1 = trinuc1;
+    void setOrfPvalues(ArrayList<Double> pValues){
+        frameWithLongestORF = pValues.indexOf((Collections.min(pValues)));
+        orfLengthPValue = Collections.min(pValues);
+        orfLenP1 = pValues.get(0);
+        orfLenP2 = pValues.get(1);
+        orfLenP3 = pValues.get(2);
+        orfLenP4 = pValues.get(3);
+        orfLenP5 = pValues.get(4);
+        orfLenP6 = pValues.get(5);
     }
-
-    public void setTrinuc2(double trinuc2) {
-        this.trinuc2 = trinuc2;
-    }
-
-    public void setTrinuc3(double trinuc3) {
-        this.trinuc3 = trinuc3;
-    }
-
-    public void setDinuc1(double dinuc1) {
-        this.dinuc1 = dinuc1;
-    }
-
-    public void setDinuc2(double dinuc2) {
-        this.dinuc2 = dinuc2;
-    }
-    //    public int getRank() {
-//        return rank;
-//    }
-//
-//    public double getGcContent() {
-//        return gcContent;
-//    }
-//
-//    public double getDinucleotidePValue() {
-//        return dinucleotidePValue;
-//    }
-
-    public double getOrfLenP1() {
-        return orfLenP1;
-    }
-
-    public double getOrfLenP2() {
-        return orfLenP2;
-    }
-
-    public double getOrfLenP3() {
-        return orfLenP3;
-    }
-
-    public double getOrfLenP4() {
-        return orfLenP4;
-    }
-
-    public double getOrfLenP5() {
-        return orfLenP5;
-    }
-
-    public double getOrfLenP6() {
-        return orfLenP6;
-    }
-
-    double getTrinucelotidePValue() {
-        return trinucelotidePValue;
-    }
-
-//    public void setRank(int rank) {
-//        this.rank = rank;
-//    }
-
-    void setTrinucelotidePValue(double trinucelotidePValue) {
-        this.trinucelotidePValue = trinucelotidePValue;
-    }
-
-    void setDinucleotidePvalue(double dinucleotidePValue) {
-        this.dinucleotidePValue = dinucleotidePValue;
-    }
-
-    public void setOrfLenP1(double orfLenP1) {
-        this.orfLenP1 = orfLenP1;
-    }
-
-    public void setOrfLenP2(double orfLenP2) {
-        this.orfLenP2 = orfLenP2;
-    }
-
-    public void setOrfLenP3(double orfLenP3) {
-        this.orfLenP3 = orfLenP3;
-    }
-
-    public void setOrfLenP4(double orfLenP4) {
-        this.orfLenP4 = orfLenP4;
-    }
-
-    public void setOrfLenP5(double orfLenP5) {
-        this.orfLenP5 = orfLenP5;
-    }
-
-    public void setOrfLenP6(double orfLenP6) {
-        this.orfLenP6 = orfLenP6;
+    void setMotifPValues(ArrayList<Double> pValues1, ArrayList<Double> pValues2){
+        trinucelotidePValue = Collections.min(pValues1);
+        trinuc1 = pValues1.get(0);
+        trinuc2 = pValues1.get(1);
+        trinuc3 = pValues1.get(2);
+        dinucleotidePValue = Collections.min(pValues2);
+        dinuc1 = pValues2.get(0);
+        dinuc2 = pValues2.get(1);
+        if (frameWithLongestORF%3 == 0){
+            triNucFreqOfLongestORFframe = trinuc1;
+        }
+        if (frameWithLongestORF%3 == 1){
+            triNucFreqOfLongestORFframe = trinuc2;
+        }
+        if (frameWithLongestORF%3 == 2){
+            triNucFreqOfLongestORFframe = trinuc3;
+        }
     }
 }

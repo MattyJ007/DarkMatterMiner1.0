@@ -1,9 +1,8 @@
 package sample;
-
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
-
 class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
@@ -11,15 +10,21 @@ class Metagenome {
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
         assert listOfFilesTemp != null;
-        for(File j: listOfFilesTemp){
+        for(File file: listOfFilesTemp){
             //** inputs fas and fasta files into gmato. prevents other files being submitted accidently
-            if (j.getName().substring(j.getName().length()-4).equals(".fas") || j.getName().substring(j.getName().length()-4).equals("asta")) {
+            if (file.getName().substring(file.getName().length()-4).equals(".fas") || file.getName().substring(file.getName().length()-4).equals("asta")) {
                 //** java running perl through command line to run GMATo
-                runGMATo(j);
-                removeSSRs(j);
+                runGMATo(file);
+                removeSSRs(file);
 //                String seqName = "";
                 getData(secureRandom);
-                outputData(j);
+                try{
+                    getRankings();
+                }
+                catch (Exception e){
+                    System.out.println(e.getMessage() + " ------ getRankings");
+                }
+                outputData(file);
                 sequences.clear();
             }
         }
@@ -134,14 +139,11 @@ class Metagenome {
             for (Sequence newSequence:sequences) {
 //                        Variables.resetDistancesList();
                 AnalyseSequence.analyseSequence(newSequence, secureRandom);
-////                        OrfPValue.pValueMaker(newSequence);
 //                        lineCount++;
 //                        System.out.println(lineCount+"/"+totSeqNum+"\n------");
 //                    }
 //                    SortSeqs.bigSort();
 //                    OutputPotentialDarkMatterFas.writeOutSeqs(j);
-//                    if (Variables.isCsv() == true){
-//                        WriteCsv.file(j);
             }
             //** clears sequences of previous file - therefore new file starts with unassigned variable.
         }
@@ -149,29 +151,63 @@ class Metagenome {
             System.out.println(e.getMessage()+"\n^^^^^^ Metagenome getData");
         }
     }
+    private static void getRankings()throws Exception{
+        int metagenomeLength = sequences.size();
+        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.ORFLEN));
+        for(int weight = 1; weight<= metagenomeLength; weight++){
+            sequences.get(weight-1).setRankOrf(weight);
+        }
+        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TRINUC));
+        for(int weight = 1; weight<= metagenomeLength; weight++){
+            sequences.get(weight-1).setRankTri(weight);
+        }
+        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.BEST_ORF_TRI_FREQ));
+        for(int weight = 1; weight<= metagenomeLength; weight++){
+            sequences.get(weight-1).setRankBestORFframeTri(weight);
+        }
+        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.DINUC));
+        for(int weight = 1; weight<= metagenomeLength; weight++){
+            sequences.get(weight-1).setRankDi(weight);
+            sequences.get(weight-1).setRankTot();
+        }
+        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TOTRANK));
+    }
     private static void outputData(File input){
         String labelString = "Sequence Name\t" +
                 "Length of Sequence\t" +
                 "GC content\t"+
+                "frame with longest ORF\t"+
+                "best ORF p-value\t"+
+                "ORF Rank\t"+
                 "p-value of ORF lengths frame 1\t" +
                 "p-value of ORF lengths frame 2\t" +
                 "p-value of ORF lengths frame 3\t" +
                 "p-value of ORF lengths frame 4\t" +
                 "p-value of ORF lengths frame 5\t" +
                 "p-value of ORF lengths frame 6\t" +
+                "triNuc Freq of Longest ORF frame\t"+
+                "Rank trinuc LongestORF\t"+
                 "best Trinuc P-value\t"+
+                "Rank best Trinuc\t"+
                 "trinucPvalue Frame 1\t"+
                 "trinucPvalue Frame 2\t"+
                 "trinucPvalue Frame 3\t"+
                 "best dinuc P-value\t" +
+                "Rank Best dinuc\t"+
                 "dinucPvalue Frame 1\t"+
                 "dinucPvalue Frame 2"+
+                "Rank Total"+
                 "\n";
-        try (FileWriter writer = new FileWriter(input+"_ADM.csv")) {
-            writer.write(labelString);
+        try (
+                FileWriter writerCSV = new FileWriter(input+"_DMM.csv");
+                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
+        ) {
+            writerCSV.write(labelString);
             for (Sequence seq: sequences){
-                System.out.println(seq.getTrinucelotidePValue());
-                writer.write(seq.getSequence()+"\n");
+                writerCSV.write(seq.getSequence()+"\n");
+            }
+            for(int best = 0; best < ( sequences.size() * DarkMatterMinerUI.getTopResults()); best++){
+                writerFas.write(sequences.get(best).getFasSeqInfo() + "\n");
             }
         }
         catch (Exception e){
