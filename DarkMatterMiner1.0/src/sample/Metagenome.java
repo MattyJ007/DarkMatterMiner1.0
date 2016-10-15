@@ -41,6 +41,7 @@ class Metagenome {
 //                    if (Variables.isCsv() == true){
 //                        WriteCsv.file(j);
                     }
+                    //** clears sequences of previous file - therefore new file starts with unassigned variable.
                     sequences.clear();
                 }
                 catch (Exception e){

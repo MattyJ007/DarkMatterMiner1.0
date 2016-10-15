@@ -12,8 +12,45 @@ class AnalyseSequence {
         clearORFindeces();
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
-        chiSquare(allPermutationFreqArrays, newSeq);
         getORFLengths();
+        chiSquare(allPermutationFreqArrays, newSeq);
+
+    }
+
+    private static Integer[] totalExpectedFrequenciesTri = new Integer[64];
+    private static Integer[] totalExpectedFrequenciesDi = new Integer[16];
+    private static ArrayList<ArrayList<Integer>> allPermutationFreqArrays = new ArrayList<>();
+    private static ArrayList<Integer> trinucFreqFrame1Temp = new ArrayList<>();
+    private static ArrayList<Integer> trinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
+    private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
+    private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
+
+    private static void setTotalExpectedFrequencies(){
+        for (int j = 0; j<64;j++){
+            totalExpectedFrequenciesTri[j] = 0;
+        }
+        for (int j = 0; j<16;j++){
+            totalExpectedFrequenciesDi[j] = 0;
+        }
+    }
+
+    private static void clearORFindeces(){
+        orfindeces.clear();
+    }
+
+    private static void clearFrameArrays(){
+        trinucFreqFrame1Temp.clear();
+        trinucFreqFrame2Temp.clear();
+        trinucFreqFrame3Temp.clear();
+        dinucFreqFrame1Temp.clear();
+        dinucFreqFrame2Temp.clear();
+    }
+    //** gets GC content of each sequence
+    private static double gCcount(String seq){
+        int countGC = countMatches(seq, "G") + countMatches(seq, "C");
+        return (double)countGC/seq.length();
     }
     private static int countMatches(String str, String sub) {
         if (str.isEmpty() || sub.isEmpty()) {return -1;}
@@ -25,12 +62,6 @@ class AnalyseSequence {
         }
         return count;
     }
-    //** gets GC content of each sequence
-    private static double gCcount(String seq){
-        int countGC = countMatches(seq, "G") + countMatches(seq, "C");
-        return (double)countGC/seq.length();
-    }
-
     private static void generatePermutations(String seqLine, boolean secureRandom){
         int permutations = DarkMatterMinerUI.getPermutations();
         SecureRandom sRand;
@@ -75,39 +106,6 @@ class AnalyseSequence {
             }
         }
     }
-
-    private static Integer[] totalExpectedFrequenciesTri = new Integer[64];
-    private static Integer[] totalExpectedFrequenciesDi = new Integer[16];
-    private static ArrayList<ArrayList<Integer>> allPermutationFreqArrays = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
-    private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
-
-
-    private static void setTotalExpectedFrequencies(){
-        for (int j = 0; j<64;j++){
-            totalExpectedFrequenciesTri[j] = 0;
-        }
-        for (int j = 0; j<16;j++){
-            totalExpectedFrequenciesDi[j] = 0;
-        }
-    }
-
-    private static void clearORFindeces(){
-        orfindeces.clear();
-    }
-
-    private static void clearFrameArrays(){
-        trinucFreqFrame1Temp.clear();
-        trinucFreqFrame2Temp.clear();
-        trinucFreqFrame3Temp.clear();
-        dinucFreqFrame1Temp.clear();
-        dinucFreqFrame2Temp.clear();
-    }
-
     private static void getFrequency(String seq){
         clearFrameArrays();
         ArrayList<ArrayList<Integer>> unsortedMotifFrequencies = new ArrayList<>();
@@ -126,6 +124,9 @@ class AnalyseSequence {
         for (int d: stopCodons){
             orfindeces.add(unsortedMotifFrequencies.get(d));
         }
+        sortFrequenciesIntoFrames(unsortedMotifFrequencies);
+    }
+    private static void sortFrequenciesIntoFrames(ArrayList<ArrayList<Integer>> unsortedMotifFrequencies){
         int frame;
         for (int j = 0; j<80; j++){
             int motifFrameT1 = 0;
@@ -245,6 +246,6 @@ class AnalyseSequence {
     }
     private static void getORFLengths(){
 //        orfindeces.forEach(System.out::println);
-        System.out.println(orfindeces.size()+"\n---------------\n\n\n\n\n\n------------\n\n\n---\n");
+        System.out.println(orfindeces.size()+"\n------------------------------\n");
     }
 }

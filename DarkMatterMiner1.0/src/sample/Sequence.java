@@ -56,7 +56,7 @@ class Sequence {
         return name;
     }
 
-    public String getRawSeq() {
+    String getRawSeq() {
         return rawSeq;
     }
 
@@ -87,8 +87,7 @@ class Sequence {
     public void setsSRstartloci(int sSRstartloci) {
         this.sSRstartloci = sSRstartloci;
     }
-
-    public void setGcContent(double gcContent) {
+    void setGcContent(double gcContent) {
         this.gcContent = gcContent;
     }
 
@@ -128,7 +127,7 @@ class Sequence {
         return orfLenP6;
     }
 
-    public double getTriBias1() {
+    double getTriBias1() {
         return triBias1;
     }
 
@@ -144,7 +143,7 @@ class Sequence {
         this.rank = rank;
     }
 
-    public void setTriBias1(double triBias1) {
+    void setTriBias1(double triBias1) {
         this.triBias1 = triBias1;
     }
 
@@ -156,7 +155,7 @@ class Sequence {
         this.triBias3 = triBias3;
     }
 
-    public void setDinucleotidePvalue(double dinucleotidePValue) {
+    void setDinucleotidePvalue(double dinucleotidePValue) {
         this.dinucleotidePValue = dinucleotidePValue;
     }
 
@@ -183,7 +182,4 @@ class Sequence {
     public void setOrfLenP6(double orfLenP6) {
         this.orfLenP6 = orfLenP6;
     }
-
-
-
 }
