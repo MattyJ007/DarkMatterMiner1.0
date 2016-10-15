@@ -365,7 +365,7 @@ public class DarkMatterMinerUI extends Application {
         @Override
         public void run() {
             try{
-                Metagenome.create(getInputFolder(),getTopResults(),isSecureRandom());
+                Metagenome.create(getInputFolder(),isSecureRandom());
                 System.out.println("\nAnalysis starting...");
             }
             catch (Exception e){

@@ -12,6 +12,7 @@ class AnalyseSequence {
         newSeq.setGcContent(gCcount((newSeq.getRawSeq())));
         generatePermutations(newSeq.getRawSeq(), secureRandom);
         chiSquare(allPermutationFreqArrays, newSeq);
+        getORFLengths();
     }
     private static int countMatches(String str, String sub) {
         if (str.isEmpty() || sub.isEmpty()) {return -1;}
@@ -82,6 +83,7 @@ class AnalyseSequence {
     private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
     private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
 
 
     private static void setTotalExpectedFrequencies(){
@@ -105,6 +107,7 @@ class AnalyseSequence {
         clearFrameArrays();
         ArrayList<ArrayList<Integer>> unsortedMotifFrequencies = new ArrayList<>();
         String motifString = "AAA,AAT,AAG,AAC,ATA,ATT,ATG,ATC,AGA,AGT,AGG,AGC,ACA,ACT,ACG,ACC,TAA,TAT,TAG,TAC,TTA,TTT,TTG,TTC,TGA,TGT,TGG,TGC,TCA,TCT,TCG,TCC,GAA,GAT,GAG,GAC,GTA,GTT,GTG,GTC,GGA,GGT,GGG,GGC,GCA,GCT,GCG,GCC,CAA,CAT,CAG,CAC,CTA,CTT,CTG,CTC,CGA,CGT,CGG,CGC,CCA,CCT,CCG,CCC,AA,AT,AG,AC,TA,TT,TG,TC,GA,GT,GG,GC,CA,CT,CG,CC";
+        Integer[] stopCodons = {16,18,20,24,28,52};
         String[] motifList = motifString.split(",");
         for (String motif: motifList){
             ArrayList<Integer> motifIndeces = new ArrayList<>();
@@ -115,6 +118,9 @@ class AnalyseSequence {
             }
             unsortedMotifFrequencies.add(motifIndeces);
         }
+        for (int d: stopCodons){
+            orfindeces.add(unsortedMotifFrequencies.get(d));
+        }
         int frame;
         for (int j = 0; j<80; j++){
             int motifFrameT1 = 0;
@@ -122,6 +128,9 @@ class AnalyseSequence {
             int motifFrameT3 = 0;
             int motifFrameD1 = 0;
             int motifFrameD2 = 0;
+            if(j == 17){
+                System.out.println(unsortedMotifFrequencies.get(j));
+            }
             if(j<64){
                 for(int motifIndex: unsortedMotifFrequencies.get(j)) {
                     frame = motifIndex % 3;
@@ -228,8 +237,11 @@ class AnalyseSequence {
         if ((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()) < newSeq.getTriBias1()){
             newSeq.setTriBias1((1-expectedChiValuesT.indexOf(observedChiValuesT.get(2))/(double) expectedChiValuesT.size()));
         }
-        System.out.println(newSeq.getName());
-        System.out.println(newSeq.getDinucleotidePValue());
-        System.out.println(newSeq.getTriBias1());
+//        System.out.println(newSeq.getName());
+//        System.out.println(newSeq.getDinucleotidePValue());
+//        System.out.println(newSeq.getTriBias1());
+    }
+    private static void getORFLengths(){
+        orfindeces.forEach(System.out::println);
     }
 }

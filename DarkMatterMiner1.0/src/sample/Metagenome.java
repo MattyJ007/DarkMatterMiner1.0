@@ -11,7 +11,7 @@ class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
 
-    static void create(String inOutFolder, double topPercentage, boolean secureRandom){
+    static void create(String inOutFolder, boolean secureRandom){
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
         assert listOfFilesTemp != null;
