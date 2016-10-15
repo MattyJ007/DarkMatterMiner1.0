@@ -57,6 +57,10 @@ class Sequence {
         return rawSeq;
     }
 
+    public int getFrameWithLongestORF() {
+        return frameWithLongestORF;
+    }
+
     double getDinucleotidePValue() {
         return dinucleotidePValue;
     }
@@ -97,9 +101,9 @@ class Sequence {
 //        this.microsatellite = microsatellite;
 //    }
 //
-//    public void setTranslatedAA(String translatedAA) {
-//        this.translatedAA = translatedAA;
-//    }
+    public void setTranslatedAA(String translatedAA) {
+        this.translatedAA = translatedAA;
+    }
 //
 //    public void setMicrosatelliteMotif(String microsatelliteMotif) {
 //        this.microsatelliteMotif = microsatelliteMotif;

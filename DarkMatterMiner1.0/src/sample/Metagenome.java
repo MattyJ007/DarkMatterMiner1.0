@@ -172,6 +172,10 @@ class Metagenome {
         }
         Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TOTRANK));
     }
+    private static void translateSeq(Sequence bestSeq){
+        bestSeq.getFrameWithLongestORF();
+        bestSeq.getRawSeq();
+    }
     private static void outputData(File input){
         String labelString = "Sequence Name\t" +
                 "Length of Sequence\t" +
@@ -203,11 +207,12 @@ class Metagenome {
                 FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
         ) {
             writerCSV.write(labelString);
-            for (Sequence seq: sequences){
-                writerCSV.write(seq.getSequence()+"\n");
-            }
             for(int best = 0; best < ( sequences.size() * DarkMatterMinerUI.getTopResults()); best++){
                 writerFas.write(sequences.get(best).getFasSeqInfo() + "\n");
+                translateSeq(sequences.get(best));
+            }
+            for (Sequence seq: sequences){
+                writerCSV.write(seq.getSequence()+"\n");
             }
         }
         catch (Exception e){

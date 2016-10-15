@@ -42,6 +42,5 @@ class ItemComparator implements Comparator<Sequence> {
         else {
             return 0;
         }
-//        return (int) (comparison*100000000);
     }
 }
