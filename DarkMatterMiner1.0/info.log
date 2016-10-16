@@ -1,15 +1,15 @@
-gmat.pl was run. Current time is Sun Oct 16 00:51:36 2016
-In this run, parameters setting are: -r 6 -m 2 -x 10 -s 0 -i C:\Users\Matt\Desktop\Test1\BestOfMetaSeqTot.fas
+gmat.pl was run. Current time is Sun Oct 16 01:04:23 2016
+In this run, parameters setting are: -r 6 -m 2 -x 10 -s 0 -i C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas
 Sequences were successfully formatted. 
-file: C:\Users\Matt\Desktop\Test1\BestOfMetaSeqTot.fas.fms.
-file: C:\Users\Matt\Desktop\Test1\BestOfMetaSeqTot.fas.sat1
+file: C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.fms.
+file: C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.sat1
 
-gmat.pl was run. Current time is Sun Oct 16 00:51:36 2016
+gmat.pl was run. Current time is Sun Oct 16 01:04:23 2016
 Microsatellite data were provided.
-file:  C:\Users\Matt\Desktop\Test1\BestOfMetaSeqTot.fas.ssr
+file:  C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.ssr
 
-gmat.pl was run. Current time is Sun Oct 16 00:51:36 2016
+gmat.pl was run. Current time is Sun Oct 16 01:04:23 2016
 statistic results were provided.
-file:  C:\Users\Matt\Desktop\Test1\BestOfMetaSeqTot.fas.sat2
+file:  C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.sat2
 
-gmat.pl was run. Current time is Sun Oct 16 00:51:36 2016
+gmat.pl was run. Current time is Sun Oct 16 01:04:23 2016

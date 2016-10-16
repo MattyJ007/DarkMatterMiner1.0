@@ -15,26 +15,7 @@ class Sequence {
         length = len;
 
     }
-        //** Inputs missing data but this method is most likely going to become redundant
-//    Sequence(String n, int l, double gc, double d1, double d2, double d3, double o1, double o2, double o3, double o4, double o5, double o6, double t1, double t2, double t3){
-//        name = n;
-//        length = l;
-//        gcContent = gc;
-//        dinucleotidePValue = d1;
-//        diNucP2 = d2;
-//        diNucP3 = d3;
-//        orfLenP1 = o1;
-//        orfLenP2 = o2;
-//        orfLenP3 = o3;
-//        orfLenP4 = o4;
-//        orfLenP5 = o5;
-//        orfLenP6 = o6;
-//        trinucelotidePValue = t1;
-//        triBias2 = t2;
-//        triBias3 = t3;
-//    }
-
-        //** method used when writing csv file
+    //** method used when writing csv file
     String getSequence(){
         return (name + "\t" + length + "\t" + gcContent + "\t" +
                 frameWithLongestORF + "\t"+
@@ -50,11 +31,10 @@ class Sequence {
 //                +"\t"+rawSeq
         );
     }
+
     String getFasSeqInfo(){
         return (name+"\n"+rawSeq+"\n");
     }
-
-
     //** Getters and setters of variables
     String getRawSeq() {
         return rawSeq;
@@ -63,6 +43,7 @@ class Sequence {
     int getFrameWithLongestORF() {
         return frameWithLongestORF;
     }
+
     int getLength(){
         return length;
     }
@@ -102,28 +83,21 @@ class Sequence {
     int getRankTot() {
         return rankTot;
     }
-
     //    public void setMicrosatellite(boolean microsatellite) {
 //        this.microsatellite = microsatellite;
 //    }
-//
     void setTranslatedAA(String translatedAA) {
         this.translatedAA = translatedAA;
     }
-
     void setTranscribedmRNA(String transcribedmRNA) {
          this.transcribedmRNA = transcribedmRNA;
     }
-
-    //
 //    public void setMicrosatelliteMotif(String microsatelliteMotif) {
 //        this.microsatelliteMotif = microsatelliteMotif;
 //    }
-//
 //    public void setNumSSRrepeats(int numSSRrepeats) {
 //        this.numSSRrepeats = numSSRrepeats;
 //    }
-//
 //    public void setsSRstartloci(int sSRstartloci) {
 //        this.sSRstartloci = sSRstartloci;
 //    }

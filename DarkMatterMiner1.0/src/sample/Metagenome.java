@@ -15,7 +15,6 @@ class Metagenome {
                 //** java running perl through command line to run GMATo
                 runGMATo(file);
                 removeSSRs(file);
-//                String seqName = "";
                 getData(secureRandom);
                 try{
                     getRankings();
@@ -129,20 +128,14 @@ class Metagenome {
     private static void getData(boolean secureRandom){
         try {
             //** Counts number of seqs in file for progress output
-//                    int lineCount = 0;
-//                    int totSeqNum = sequences.size();
+            int lineCount = 0;
+            int totSeqNum = sequences.size();
             //** Not necessary - just useful to see progress
-
-//                    String seqTot;
             //** Iterates through all valid sequences
             for (Sequence newSequence:sequences) {
-//                        Variables.resetDistancesList();
                 AnalyseSequence.analyseSequence(newSequence, secureRandom);
-//                        lineCount++;
-//                        System.out.println(lineCount+"/"+totSeqNum+"\n------");
-//                    }
-//                    SortSeqs.bigSort();
-//                    OutputPotentialDarkMatterFas.writeOutSeqs(j);
+                lineCount++;
+                System.out.println(lineCount+"/"+totSeqNum+"\n------");
             }
             //** clears sequences of previous file - therefore new file starts with unassigned variable.
         }
@@ -245,10 +238,32 @@ class Metagenome {
     private static void translate(Sequence seq) {
         //temp is a multiple of 3
         // every 3 characters correspond to a valid codon?
+        int frame;
+        if(seq.getFrameWithLongestORF()==0){
+            frame =0;
+        }
+        else if (seq.getFrameWithLongestORF()==1){
+            frame = 1;
+        }
+        else if (seq.getFrameWithLongestORF()==2){
+            frame = 2;
+        }
+        else if(seq.getFrameWithLongestORF()==3){
+            frame = 0;
+            compliment(seq);
+        }
+        else if(seq.getFrameWithLongestORF()==4){
+            frame = 1;
+            compliment(seq);
+        }
+        else{
+            frame = 2;
+            compliment(seq);
+        }
         String temp = seq.getRawSeq();
         StringBuilder finalreturn = new StringBuilder();
         String codon;
-        for (int i = 0; i < seq.getLength() - 2; i+=3) {
+        for (int i = frame; i < seq.getLength() - 2; i+=3) {
             codon = temp.substring(i, i+3);
             finalreturn.append(codonsMap.get(codon));
         }
@@ -304,10 +319,32 @@ class Metagenome {
 
     }
     private static String compliment(Sequence seq){
+        int frame;
+        if(seq.getFrameWithLongestORF()==0){
+            frame =0;
+        }
+        else if (seq.getFrameWithLongestORF()==1){
+            frame = 1;
+        }
+        else if (seq.getFrameWithLongestORF()==2){
+            frame = 2;
+        }
+        else if(seq.getFrameWithLongestORF()==3){
+            frame = 0;
+            compliment(seq);
+        }
+        else if(seq.getFrameWithLongestORF()==4){
+            frame = 1;
+            compliment(seq);
+        }
+        else{
+            frame = 2;
+            compliment(seq);
+        }
         String temp = seq.getRawSeq();
         StringBuilder complimentrayStrand = new StringBuilder();
         String nucleotide;
-        for (int i = 0; i < temp.length(); i++) {
+        for (int i = frame; i < temp.length(); i++) {
             nucleotide = temp.substring(i, i+1);
             complimentrayStrand.append(compliments.get(nucleotide));
         }
