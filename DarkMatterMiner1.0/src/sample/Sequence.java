@@ -45,7 +45,10 @@ class Sequence {
                 trinucelotidePValue+ "\t"  + rankTri + "\t"+
                 trinuc1+ "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
                 dinucleotidePValue+ "\t" + rankDi + "\t"+
-                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot+"\t"+translatedAA+"\t"+transcribedmRNA);
+                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot+"\t"+
+                translatedAA+"\t"+transcribedmRNA
+//                +"\t"+rawSeq
+        );
     }
     String getFasSeqInfo(){
         return (name+"\n"+rawSeq+"\n");
@@ -57,8 +60,11 @@ class Sequence {
         return rawSeq;
     }
 
-    public int getFrameWithLongestORF() {
+    int getFrameWithLongestORF() {
         return frameWithLongestORF;
+    }
+    int getLength(){
+        return length;
     }
 
     double getDinucleotidePValue() {

@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/DarkMatterMinerUI.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/DarkMatterMinerUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Sequence.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Sequence.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gssr.pl.log" afterPath="$PROJECT_DIR$/gssr.pl.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info.log" afterPath="$PROJECT_DIR$/info.log" />
@@ -87,8 +90,8 @@
       <file leaf-file-name="Metagenome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="353" column="38" selection-start-line="353" selection-start-column="38" selection-end-line="353" selection-end-column="38" />
+            <state relative-caret-position="345">
+              <caret line="343" column="21" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
               <folding>
                 <element signature="method#create#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
@@ -101,6 +104,8 @@
                 <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
                 <element signature="initializer##1;class#Metagenome#0" expanded="false" />
                 <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
+                <element signature="initializer##2;class#Metagenome#0" expanded="false" />
+                <element signature="method#compliment#0;class#Metagenome#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -122,17 +127,19 @@
       <file leaf-file-name="Sequence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Sequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+            <state relative-caret-position="-289">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
               <folding>
                 <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
                 <element signature="e#816#897#0" expanded="false" />
-                <element signature="e#2417#2418#0" expanded="true" />
-                <element signature="e#2459#2460#0" expanded="true" />
-                <element signature="e#3342#3343#0" expanded="true" />
-                <element signature="e#3390#3391#0" expanded="true" />
-                <element signature="e#3445#3446#0" expanded="true" />
-                <element signature="e#3500#3501#0" expanded="true" />
+                <element signature="e#2467#2468#0" expanded="true" />
+                <element signature="e#2509#2510#0" expanded="true" />
+                <element signature="e#2530#2531#0" expanded="true" />
+                <element signature="e#2559#2560#0" expanded="true" />
+                <element signature="e#3442#3443#0" expanded="true" />
+                <element signature="e#3490#3491#0" expanded="true" />
+                <element signature="e#3545#3546#0" expanded="true" />
+                <element signature="e#3600#3601#0" expanded="true" />
                 <element signature="method#setOrfPvalues#0;class#Sequence#0" expanded="false" />
                 <element signature="method#setMotifPValues#0;class#Sequence#0" expanded="false" />
               </folding>
@@ -613,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476573393522</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="New variables printed out in CSV - mRNA and Amino acid">
+      <created>1476576775378</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1476576775378</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -663,6 +677,38 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968896" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34115523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15250379" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -681,7 +727,8 @@
     <MESSAGE value="Started OrfLen analysis method" />
     <MESSAGE value="BackUp before large change" />
     <MESSAGE value="First Fully Function 1.0! Produces TriNuc Bias stats, DiNuc bias stats and ORFLen stats in a CSV form with best sequences in fasta file" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Fully Function 1.0! Produces TriNuc Bias stats, DiNuc bias stats and ORFLen stats in a CSV form with best sequences in fasta file" />
+    <MESSAGE value="New variables printed out in CSV - mRNA and Amino acid" />
+    <option name="LAST_COMMIT_MESSAGE" value="New variables printed out in CSV - mRNA and Amino acid" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,6 +774,8 @@
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
+            <element signature="initializer##2;class#Metagenome#0" expanded="false" />
+            <element signature="method#compliment#0;class#Metagenome#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -738,12 +787,14 @@
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
             <element signature="e#816#897#0" expanded="false" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#3342#3343#0" expanded="true" />
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3500#3501#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3490#3491#0" expanded="true" />
+            <element signature="e#3545#3546#0" expanded="true" />
+            <element signature="e#3600#3601#0" expanded="true" />
             <element signature="method#setOrfPvalues#0;class#Sequence#0" expanded="false" />
             <element signature="method#setMotifPValues#0;class#Sequence#0" expanded="false" />
           </folding>
@@ -804,6 +855,8 @@
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
+            <element signature="initializer##2;class#Metagenome#0" expanded="false" />
+            <element signature="method#compliment#0;class#Metagenome#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -815,12 +868,14 @@
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
             <element signature="e#816#897#0" expanded="false" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#3342#3343#0" expanded="true" />
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3500#3501#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3490#3491#0" expanded="true" />
+            <element signature="e#3545#3546#0" expanded="true" />
+            <element signature="e#3600#3601#0" expanded="true" />
             <element signature="method#setOrfPvalues#0;class#Sequence#0" expanded="false" />
             <element signature="method#setMotifPValues#0;class#Sequence#0" expanded="false" />
           </folding>
@@ -881,6 +936,8 @@
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
+            <element signature="initializer##2;class#Metagenome#0" expanded="false" />
+            <element signature="method#compliment#0;class#Metagenome#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -892,12 +949,14 @@
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
             <element signature="e#816#897#0" expanded="false" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#3342#3343#0" expanded="true" />
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3500#3501#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3490#3491#0" expanded="true" />
+            <element signature="e#3545#3546#0" expanded="true" />
+            <element signature="e#3600#3601#0" expanded="true" />
             <element signature="method#setOrfPvalues#0;class#Sequence#0" expanded="false" />
             <element signature="method#setMotifPValues#0;class#Sequence#0" expanded="false" />
           </folding>
@@ -972,6 +1031,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ItemComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#294#295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DarkMatterMinerUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1010,21 +1080,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ItemComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="353" column="38" selection-start-line="353" selection-start-column="38" selection-end-line="353" selection-end-column="38" />
+        <state relative-caret-position="345">
+          <caret line="343" column="21" selection-start-line="343" selection-start-column="21" selection-end-line="343" selection-end-column="21" />
           <folding>
             <element signature="method#create#0;class#Metagenome#0" expanded="false" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
@@ -1037,23 +1096,27 @@
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
+            <element signature="initializer##2;class#Metagenome#0" expanded="false" />
+            <element signature="method#compliment#0;class#Metagenome#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Sequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        <state relative-caret-position="-289">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
           <folding>
             <element signature="method#Sequence#0;class#Sequence#0" expanded="false" />
             <element signature="e#816#897#0" expanded="false" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#3342#3343#0" expanded="true" />
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3500#3501#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="e#3442#3443#0" expanded="true" />
+            <element signature="e#3490#3491#0" expanded="true" />
+            <element signature="e#3545#3546#0" expanded="true" />
+            <element signature="e#3600#3601#0" expanded="true" />
             <element signature="method#setOrfPvalues#0;class#Sequence#0" expanded="false" />
             <element signature="method#setMotifPValues#0;class#Sequence#0" expanded="false" />
           </folding>
