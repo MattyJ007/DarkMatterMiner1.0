@@ -1,8 +1,7 @@
 package sample;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Properties;
+import java.util.*;
+
 class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
@@ -172,36 +171,195 @@ class Metagenome {
         }
         Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TOTRANK));
     }
-    private static void translateSeq(Sequence bestSeq){
-        bestSeq.getFrameWithLongestORF();
-        bestSeq.getRawSeq();
+    private static final Map<String, Character> codonsMap;
+    static {
+        codonsMap = new HashMap<>();
+        codonsMap.put("UUU", 'F');
+        codonsMap.put("UUC", 'F');
+        codonsMap.put("UUA", 'L');
+        codonsMap.put("TTT", 'F');
+        codonsMap.put("TTC", 'F');
+        codonsMap.put("TTA", 'L');
+        codonsMap.put("TTG", 'L');
+        codonsMap.put("TCT", 'S');
+        codonsMap.put("TCC", 'S');
+        codonsMap.put("TCA", 'S');
+        codonsMap.put("TCG", 'S');
+        codonsMap.put("TAT", 'Y');
+        codonsMap.put("TAC", 'Y');
+        codonsMap.put("TAA", '_');
+        codonsMap.put("TAG", '_');
+        codonsMap.put("TGT", 'C');
+        codonsMap.put("TGC", 'C');
+        codonsMap.put("TGA", '_');
+        codonsMap.put("TGG", 'W');
+        codonsMap.put("CTT", 'L');
+        codonsMap.put("CTC", 'L');
+        codonsMap.put("CTA", 'L');
+        codonsMap.put("CTG", 'L');
+        codonsMap.put("CCT", 'P');
+        codonsMap.put("CCC", 'P');
+        codonsMap.put("CCA", 'P');
+        codonsMap.put("CCG", 'P');
+        codonsMap.put("CAT", 'H');
+        codonsMap.put("CAC", 'H');
+        codonsMap.put("CAA", 'Q');
+        codonsMap.put("CAG", 'Q');
+        codonsMap.put("CGT", 'R');
+        codonsMap.put("CGC", 'R');
+        codonsMap.put("CGA", 'R');
+        codonsMap.put("CGG", 'R');
+        codonsMap.put("ATT", 'I');
+        codonsMap.put("ATC", 'I');
+        codonsMap.put("ATA", 'I');
+        codonsMap.put("ATG", 'M');
+        codonsMap.put("ACT", 'T');
+        codonsMap.put("ACC", 'T');
+        codonsMap.put("ACA", 'T');
+        codonsMap.put("ACG", 'T');
+        codonsMap.put("AAT", 'N');
+        codonsMap.put("AAC", 'N');
+        codonsMap.put("AAA", 'K');
+        codonsMap.put("AAG", 'K');
+        codonsMap.put("AGT", 'S');
+        codonsMap.put("AGC", 'S');
+        codonsMap.put("AGA", 'R');
+        codonsMap.put("AGG", 'R');
+        codonsMap.put("GTT", 'V');
+        codonsMap.put("GTC", 'V');
+        codonsMap.put("GTA", 'V');
+        codonsMap.put("GTG", 'V');
+        codonsMap.put("GCT", 'A');
+        codonsMap.put("GCC", 'A');
+        codonsMap.put("GCA", 'A');
+        codonsMap.put("GCG", 'A');
+        codonsMap.put("GAT", 'D');
+        codonsMap.put("GAC", 'D');
+        codonsMap.put("GAA", 'E');
+        codonsMap.put("GAG", 'E');
+        codonsMap.put("GGT", 'G');
+        codonsMap.put("GGC", 'G');
+        codonsMap.put("GGA", 'G');
+        codonsMap.put("GGG", 'G');
+    }
+    private static void translate(Sequence seq) {
+        //temp is a multiple of 3
+        // every 3 characters correspond to a valid codon?
+        String temp = seq.getRawSeq();
+        StringBuilder finalreturn = new StringBuilder();
+        String codon;
+        for (int i = 0; i < temp.length() - 2; i++) {
+            codon = temp.substring(i, i+3);
+            finalreturn.append(codonsMap.get(codon));
+        }
+        seq.setTranslatedAA(finalreturn.toString());
+    }
+    private static final Map<String, String> mRNA = new HashMap<>();
+    static {
+        mRNA.put("TTT", "UUU");
+        mRNA.put("TTC", "UUC");
+        mRNA.put("TTA", "UUA");
+        mRNA.put("TTG", "UUG");
+        mRNA.put("TCT", "UCU");
+        mRNA.put("TCC", "UCC");
+        mRNA.put("TCA", "UCA");
+        mRNA.put("TCG", "UCG");
+        mRNA.put("TAT", "UAU");
+        mRNA.put("TAC", "UAC");
+        mRNA.put("TAA", "UAA");
+        mRNA.put("TAG", "UAG");
+        mRNA.put("TGT", "UGU");
+        mRNA.put("TGC", "UGC");
+        mRNA.put("TGA", "UGA");
+        mRNA.put("TGG", "UGG");
+        mRNA.put("CTT", "CUU");
+        mRNA.put("CTC", "CUC");
+        mRNA.put("CTA", "CUA");
+        mRNA.put("CTG", "CUG");
+        mRNA.put("CCT", "CCU");
+        mRNA.put("CCC", "CCC");
+        mRNA.put("CCA", "CCA");
+        mRNA.put("CCG", "CCG");
+        mRNA.put("CAT", "CAU");
+        mRNA.put("CAC", "CAC");
+        mRNA.put("CAA", "CAA");
+        mRNA.put("CAG", "CAG");
+        mRNA.put("CGT", "CGU");
+        mRNA.put("CGC", "CGC");
+        mRNA.put("CGA", "CGA");
+        mRNA.put("CGG", "CGG");
+        mRNA.put("ATT", "AUU");
+        mRNA.put("ATC", "AUC");
+        mRNA.put("ATA", "AUA");
+        mRNA.put("ATG", "AUG");
+        mRNA.put("ACT", "ACU");
+        mRNA.put("ACC", "ACC");
+        mRNA.put("ACA", "ACA");
+        mRNA.put("ACG", "ACG");
+        mRNA.put("AAT", "AAU");
+        mRNA.put("AAC", "AAC");
+        mRNA.put("AAA", "AAA");
+        mRNA.put("AAG", "AAG");
+        mRNA.put("AGT", "AGU");
+        mRNA.put("AGC", "AGC");
+        mRNA.put("AGA", "AGA");
+        mRNA.put("AGG", "AGG");
+        mRNA.put("GTT", "GUU");
+        mRNA.put("GTC", "GUC");
+        mRNA.put("GTA", "GUA");
+        mRNA.put("GTG", "GUG");
+        mRNA.put("GCT", "GCU");
+        mRNA.put("GCC", "GCC");
+        mRNA.put("GCA", "GCA");
+        mRNA.put("GCG", "GCG");
+        mRNA.put("GAT", "GAU");
+        mRNA.put("GAC", "GAC");
+        mRNA.put("GAA", "GAA");
+        mRNA.put("GAG", "GAG");
+        mRNA.put("GGT", "GGU");
+        mRNA.put("GGC", "GGC");
+        mRNA.put("GGA", "GGA");
+        mRNA.put("GGG", "GGG");
+
+    }
+    private static void transcribe(Sequence seq){
+        String temp = seq.getRawSeq();
+        StringBuilder finalreturn = new StringBuilder();
+        String codon;
+        for (int i = 0; i < temp.length() - 2; i++) {
+            codon = temp.substring(i, i+3);
+            finalreturn.append(mRNA.get(codon));
+        }
+        seq.setTranscribedmRNA(finalreturn.toString());
     }
     private static void outputData(File input){
         String labelString = "Sequence Name\t" +
-                "Length of Sequence\t" +
-                "GC content\t"+
-                "frame with longest ORF\t"+
-                "best ORF p-value\t"+
-                "ORF Rank\t"+
-                "p-value of ORF lengths frame 1\t" +
-                "p-value of ORF lengths frame 2\t" +
-                "p-value of ORF lengths frame 3\t" +
-                "p-value of ORF lengths frame 4\t" +
-                "p-value of ORF lengths frame 5\t" +
-                "p-value of ORF lengths frame 6\t" +
-                "triNuc Freq of Longest ORF frame\t"+
-                "Rank trinuc LongestORF\t"+
-                "best Trinuc P-value\t"+
-                "Rank best Trinuc\t"+
-                "trinucPvalue Frame 1\t"+
-                "trinucPvalue Frame 2\t"+
-                "trinucPvalue Frame 3\t"+
-                "best dinuc P-value\t" +
-                "Rank Best dinuc\t"+
-                "dinucPvalue Frame 1\t"+
-                "dinucPvalue Frame 2"+
-                "Rank Total"+
-                "\n";
+             "Length of Sequence\t" +
+             "GC content\t"+
+             "frame with longest ORF\t"+
+             "best ORF p-value\t"+
+             "ORF Rank\t"+
+             "p-value of ORF lengths frame 1\t" +
+             "p-value of ORF lengths frame 2\t" +
+             "p-value of ORF lengths frame 3\t" +
+             "p-value of ORF lengths frame 4\t" +
+             "p-value of ORF lengths frame 5\t" +
+             "p-value of ORF lengths frame 6\t" +
+             "triNuc Freq of Longest ORF frame\t"+
+             "Rank trinuc LongestORF\t"+
+             "best Trinuc P-value\t"+
+             "Rank best Trinuc\t"+
+             "trinucPvalue Frame 1\t"+
+             "trinucPvalue Frame 2\t"+
+             "trinucPvalue Frame 3\t"+
+             "best dinuc P-value\t" +
+             "Rank Best dinuc\t"+
+             "dinucPvalue Frame 1\t"+
+             "dinucPvalue Frame 2\t"+
+             "Rank Total\t"+
+             "Amino Acid Seq\t"+
+                "mRNA seq"+
+             "\n";
         try (
                 FileWriter writerCSV = new FileWriter(input+"_DMM.csv");
                 FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
@@ -209,7 +367,8 @@ class Metagenome {
             writerCSV.write(labelString);
             for(int best = 0; best < ( sequences.size() * DarkMatterMinerUI.getTopResults()); best++){
                 writerFas.write(sequences.get(best).getFasSeqInfo() + "\n");
-                translateSeq(sequences.get(best));
+                translate(sequences.get(best));
+                transcribe(sequences.get(best));
             }
             for (Sequence seq: sequences){
                 writerCSV.write(seq.getSequence()+"\n");

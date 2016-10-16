@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 class Sequence {
     //** Attributes of sequence
-    private String name, rawSeq,translatedAA, microsatelliteMotif;
+    private String name, rawSeq,translatedAA, transcribedmRNA, microsatelliteMotif;
     private int length, rankTri, rankBestORFframeTri,rankDi, rankOrf, rankTot, numSSRrepeats, sSRstartloci,frameWithLongestORF;
     private double gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
 //    private boolean microsatellite;
@@ -45,7 +45,7 @@ class Sequence {
                 trinucelotidePValue+ "\t"  + rankTri + "\t"+
                 trinuc1+ "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
                 dinucleotidePValue+ "\t" + rankDi + "\t"+
-                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot);
+                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot+"\t"+translatedAA+"\t"+transcribedmRNA);
     }
     String getFasSeqInfo(){
         return (name+"\n"+rawSeq+"\n");
@@ -101,10 +101,15 @@ class Sequence {
 //        this.microsatellite = microsatellite;
 //    }
 //
-    public void setTranslatedAA(String translatedAA) {
+    void setTranslatedAA(String translatedAA) {
         this.translatedAA = translatedAA;
     }
-//
+
+    void setTranscribedmRNA(String transcribedmRNA) {
+         this.transcribedmRNA = transcribedmRNA;
+    }
+
+    //
 //    public void setMicrosatelliteMotif(String microsatelliteMotif) {
 //        this.microsatelliteMotif = microsatelliteMotif;
 //    }
