@@ -319,32 +319,10 @@ class Metagenome {
 
     }
     private static String compliment(Sequence seq){
-        int frame;
-        if(seq.getFrameWithLongestORF()==0){
-            frame =0;
-        }
-        else if (seq.getFrameWithLongestORF()==1){
-            frame = 1;
-        }
-        else if (seq.getFrameWithLongestORF()==2){
-            frame = 2;
-        }
-        else if(seq.getFrameWithLongestORF()==3){
-            frame = 0;
-            compliment(seq);
-        }
-        else if(seq.getFrameWithLongestORF()==4){
-            frame = 1;
-            compliment(seq);
-        }
-        else{
-            frame = 2;
-            compliment(seq);
-        }
         String temp = seq.getRawSeq();
         StringBuilder complimentrayStrand = new StringBuilder();
         String nucleotide;
-        for (int i = frame; i < temp.length(); i++) {
+        for (int i = 0; i < temp.length(); i++) {
             nucleotide = temp.substring(i, i+1);
             complimentrayStrand.append(compliments.get(nucleotide));
         }
