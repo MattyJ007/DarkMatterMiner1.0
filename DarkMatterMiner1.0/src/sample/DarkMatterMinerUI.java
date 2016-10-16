@@ -99,9 +99,7 @@ public class DarkMatterMinerUI extends Application {
     private static void setInputFolder(String inputFolder) {
         DarkMatterMinerUI.inputFolder = inputFolder;
     }
-
     //**Launches DarkMatterMiner GUI
-
     public void start(Stage primaryStage) throws Exception{
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -217,11 +215,8 @@ public class DarkMatterMinerUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     //** Checks User Input >>
-
-    private static String checkUserInput(String inFile, String sSRrep, String minSSR, String maxSSR,
-                               String permutations, boolean rand,String ignoreSeqs,String topPercentage){
+    private static String checkUserInput(String inFile, String sSRrep, String minSSR, String maxSSR, String permutations, boolean rand,String ignoreSeqs,String topPercentage){
         setStart(false);
 
         if (inFile.isEmpty()){
@@ -359,7 +354,6 @@ public class DarkMatterMinerUI extends Application {
         setStart(true);
         return "All settings are valid!";
     }
-
     //** new thread which creates the Metagenome
     private class RunClass implements Runnable{
         @Override
@@ -374,7 +368,6 @@ public class DarkMatterMinerUI extends Application {
             }
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
