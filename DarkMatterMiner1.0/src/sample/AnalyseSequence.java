@@ -75,10 +75,9 @@ class AnalyseSequence {
     }
 
     private static void generatePermutations(String newSeq, boolean secureRandom){
-        int permutations = DarkMatterMinerUI.getPermutations();
+        int permutations = DMMController.getPermutations();
         SecureRandom sRand;
         Random nRand;
-//        OpenReadingFrameDistances.stopper(seqLine,0);
         int randomNum;
         int len;
         String temp;
@@ -98,7 +97,6 @@ class AnalyseSequence {
                 }
                 randSeq = String.join("", (CharSequence[]) seq);
                 getFrequency(randSeq);
-//                OpenReadingFrameDistances.stopper(randSeq, 1);
             }
         }
         else {
@@ -114,7 +112,6 @@ class AnalyseSequence {
                 }
                 randSeq = String.join("", (CharSequence[]) seq);
                 getFrequency(randSeq);
-//                OpenReadingFrameDistances.stopper(randSeq, 1);
             }
         }
     }
@@ -206,8 +203,8 @@ class AnalyseSequence {
             double chiT = 0;
             if (observedArray.size() == 64){
                 for(int n = 0; n<64;n++){
-                    exp = (totalExpectedFrequenciesTri[n]-observedArray.get(n))/((double) (DarkMatterMinerUI.getPermutations()*3)+2);
-//                    System.out.println(exp + " = " + totalExpectedFrequenciesTri[n]+" - "+ observedArray.get(n)+" / "+ DarkMatterMinerUI.getPermutations()+" * 3" + " + 2");
+                    exp = (totalExpectedFrequenciesTri[n]-observedArray.get(n))/((double) (DMMController.getPermutations()*3)+2);
+//                    System.out.println(exp + " = " + totalExpectedFrequenciesTri[n]+" - "+ observedArray.get(n)+" / "+ DarkMatterMinerMain.getPermutations()+" * 3" + " + 2");
                     chiT += Math.pow(exp - observedArray.get(n),2)/exp;
 //                    System.out.println(chi + " +=( " +exp + " - "+observedArray.get(n)+")**2/ "+exp );
                 }
@@ -223,7 +220,7 @@ class AnalyseSequence {
             double chiD = 0;
             if(observedArray.size() == 16){
                 for(int n = 0; n<16;n++){
-                    exp = (totalExpectedFrequenciesDi[n]-observedArray.get(n))/((double) (DarkMatterMinerUI.getPermutations()*2)+1);
+                    exp = (totalExpectedFrequenciesDi[n]-observedArray.get(n))/((double) (DMMController.getPermutations()*2)+1);
                     chiD += Math.pow(exp - observedArray.get(n),2)/exp;
                 }
                 if (count>=3 && count<5){

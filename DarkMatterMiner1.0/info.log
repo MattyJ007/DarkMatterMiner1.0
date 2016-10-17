@@ -1,15 +1,15 @@
-gmat.pl was run. Current time is Sun Oct 16 01:14:21 2016
-In this run, parameters setting are: -r 6 -m 2 -x 10 -s 0 -i C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas
+gmat.pl was run. Current time is Mon Oct 17 23:37:49 2016
+In this run, parameters setting are: -r 2 -m 4 -x 10 -s 0 -i C:\Users\Matt\Desktop\C1-1Test\C1-1noSSR.fas
 Sequences were successfully formatted. 
-file: C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.fms.
-file: C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.sat1
+file: C:\Users\Matt\Desktop\C1-1Test\C1-1noSSR.fas.fms.
+file: C:\Users\Matt\Desktop\C1-1Test\C1-1noSSR.fas.sat1
 
-gmat.pl was run. Current time is Sun Oct 16 01:14:21 2016
+gmat.pl was run. Current time is Mon Oct 17 23:37:49 2016
 Microsatellite data were provided.
-file:  C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.ssr
+file:  C:\Users\Matt\Desktop\C1-1Test\C1-1noSSR.fas.ssr
 
-gmat.pl was run. Current time is Sun Oct 16 01:14:21 2016
+gmat.pl was run. Current time is Mon Oct 17 23:37:49 2016
 statistic results were provided.
-file:  C:\Users\Matt\Desktop\RealDataTest\RealSeqs.fas.sat2
+file:  C:\Users\Matt\Desktop\C1-1Test\C1-1noSSR.fas.sat2
 
-gmat.pl was run. Current time is Sun Oct 16 01:14:21 2016
+gmat.pl was run. Current time is Mon Oct 17 23:37:50 2016

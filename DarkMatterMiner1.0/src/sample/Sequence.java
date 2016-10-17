@@ -3,8 +3,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 class Sequence {
     //** Attributes of sequence
-    private String name, rawSeq,translatedAA, transcribedmRNA, microsatelliteMotif;
-    private int length, rankTri, rankBestORFframeTri,rankDi, rankOrf, rankTot, numSSRrepeats, sSRstartloci,frameWithLongestORF;
+    private String name, rawSeq,translatedAA, transcribedmRNA;
+//    String microsatelliteMotif;
+    private int length, rankTri, rankBestORFframeTri,rankDi, rankOrf, rankTot, frameWithLongestORF;
+//    int numSSRrepeats, sSRstartloci,
     private double gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
 //    private boolean microsatellite;
 

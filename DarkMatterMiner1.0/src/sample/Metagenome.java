@@ -8,8 +8,11 @@ class Metagenome {
     static void create(String inOutFolder, boolean secureRandom){
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
+
         assert listOfFilesTemp != null;
+
         for(File file: listOfFilesTemp){
+
             //** inputs fas and fasta files into gmato. prevents other files being submitted accidently
             if (file.getName().substring(file.getName().length()-4).equals(".fas") || file.getName().substring(file.getName().length()-4).equals("asta")) {
                 //** java running perl through command line to run GMATo
@@ -26,11 +29,12 @@ class Metagenome {
                 sequences.clear();
             }
         }
+        System.out.println("-------------------------------\n          Complete\n------------------------------");
     }
     private static void runGMATo(File input){
         String i = input.getAbsolutePath();
         //** GMATo settings
-        String que = "Running statement: \n -r " + DarkMatterMinerUI.getMotifRepeats() + " -m " + DarkMatterMinerUI.getMinMotifLen() + " -x " + DarkMatterMinerUI.getMaxMotifLen() + " -s " + 0 + " -i " + i;
+        String que = "Running statement: \n -r " + DMMController.getMotifRepeats() + " -m " + DMMController.getMinMotifLen() + " -x " + DMMController.getMaxMotifLen() + " -s " + 0 + " -i " + i;
         que = que.replaceAll("Running statement: \n","");
         BufferedReader bufreader;
         Properties pp = System.getProperties();
@@ -113,7 +117,7 @@ class Metagenome {
                         }
                     }
                     //** Sequence objects are created and added to Metagenome
-                    else if(match == 0 && seqLine.length() > DarkMatterMinerUI.getIgnoreShortSeq() ){
+                    else if(match == 0 && seqLine.length() > DMMController.getIgnoreShortSeq() ){
                         raw  = new Sequence(seqName,seqLine,seqLine.length());
                         sequences.add(raw);
                     }
@@ -239,13 +243,14 @@ class Metagenome {
         //temp is a multiple of 3
         // every 3 characters correspond to a valid codon?
         int frame;
-        if(seq.getFrameWithLongestORF()==0){
+        if(seq.getFrameWithLongestORF()==2){
             frame =0;
         }
-        else if (seq.getFrameWithLongestORF()==1){
-            frame = 1;
+        else if (seq.getFrameWithLongestORF()==0){
+            //** TEst annomalies??? this frame produces the best aa
+            frame = 0;
         }
-        else if (seq.getFrameWithLongestORF()==2){
+        else if (seq.getFrameWithLongestORF()==1){
             frame = 2;
         }
         else if(seq.getFrameWithLongestORF()==3){
@@ -362,7 +367,7 @@ class Metagenome {
                 FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
         ) {
             writerCSV.write(labelString);
-            for(int best = 0; best < ( sequences.size() * DarkMatterMinerUI.getTopResults()); best++){
+            for(int best = 0; best < ( sequences.size() * DMMController.getTopResults()); best++){
                 writerFas.write(sequences.get(best).getFasSeqInfo() + "\n");
                 translate(sequences.get(best));
                 transcribe(sequences.get(best));
