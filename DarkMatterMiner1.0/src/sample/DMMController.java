@@ -8,19 +8,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 public class DMMController {
-    //**Launches DarkMatterMiner GUI
-//    public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("DarkMatterMinerUI.fxml"));
-//        Scene scene = new Scene(root);
-//        primaryStage.setTitle("Dark Matter Miner 1.0");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//        primaryStage.setOnCloseRequest(t -> System.exit(0));
-//    }
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-
     private static boolean start; //** variable that prevents launching Metagenome if User settings aren't correct
     private static boolean secureRandom; //** Allows user to use either Random() or SecureRandom()
     private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
@@ -77,7 +64,7 @@ public class DMMController {
     }
 
     public void helpDMM(){
-        userOutput.setText("HELP!!" + progressFile.getProgressNum());
+        userOutput.setText("HELP!!");
     }
 
     private static void setStart(boolean startT) {

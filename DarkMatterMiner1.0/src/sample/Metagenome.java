@@ -1,8 +1,5 @@
 package sample;
-import javafx.scene.control.ProgressBar;
-
 import java.io.*;
-import java.nio.BufferUnderflowException;
 import java.util.*;
 
 class Metagenome {
