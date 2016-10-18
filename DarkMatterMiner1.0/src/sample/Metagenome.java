@@ -156,9 +156,13 @@ class Metagenome {
             //** Not necessary - just useful to see progress
             //** Iterates through all valid sequences
             for (Sequence newSequence:sequences) {
+                long start = System.currentTimeMillis();
                 AnalyseSequence.analyseSequence(newSequence, secureRandom);
+                long stop = System.currentTimeMillis() - start;
+                System.out.println(stop + "    ===== Analysis time ");
                 lineCount++;
                 progressFile.setProgressNum(lineCount/((double) totSeqNum));
+//                System.out.println(lineCount/(double)totSeqNum);
             }
         }
         catch (Exception e){

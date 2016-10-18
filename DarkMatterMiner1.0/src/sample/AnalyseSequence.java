@@ -18,28 +18,29 @@ class AnalyseSequence {
     }
     private static Short[] totalExpectedFrequenciesTri = new Short[64];
     private static Short[] totalExpectedFrequenciesDi = new Short[16];
-    private static ArrayList<ArrayList<Short>> allPermutationFreqArrays = new ArrayList<>();
-    private static ArrayList<Short> trinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Short> trinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<Short> trinucFreqFrame3Temp = new ArrayList<>();
-    private static ArrayList<Short> dinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Short> dinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<Float> observedChiValuesT = new ArrayList<>();
-    private static ArrayList<Float> expectedChiValuesT = new ArrayList<>();
-    private static ArrayList<Float> observedChiValuesD = new ArrayList<>();
-    private static ArrayList<Float> expectedChiValuesD = new ArrayList<>();
-    private static ArrayList<Short> longestORFs = new ArrayList<>();
-    private static ArrayList<Short> observedLongestORFs = new ArrayList<>();
+    private static ArrayList<ArrayList<Short>> allPermutationFreqArrays;
+    private static ArrayList<Short> trinucFreqFrame1Temp;
+    private static ArrayList<Short> trinucFreqFrame2Temp;
+    private static ArrayList<Short> trinucFreqFrame3Temp;
+    private static ArrayList<Short> dinucFreqFrame1Temp;
+    private static ArrayList<Short> dinucFreqFrame2Temp;
+    private static ArrayList<Float> observedChiValuesT;
+    private static ArrayList<Float> expectedChiValuesT;
+    private static ArrayList<Float> observedChiValuesD;
+    private static ArrayList<Float> expectedChiValuesD;
+    private static ArrayList<Short> longestORFs;
+    private static ArrayList<Short> observedLongestORFs;
     private static byte countForObservedORFs;
 
     private static void resetArrayListsAndCount(){
-        observedChiValuesT.clear();
-        observedChiValuesD.clear();
-        expectedChiValuesT.clear();
-        expectedChiValuesD.clear();
+        allPermutationFreqArrays = new ArrayList<>();
+        observedChiValuesT = new ArrayList<>();
+        observedChiValuesD = new ArrayList<>();
+        expectedChiValuesT = new ArrayList<>();
+        expectedChiValuesD = new ArrayList<>();
         countForObservedORFs = 0;
-        observedLongestORFs.clear();
-        longestORFs.clear();
+        observedLongestORFs = new ArrayList<>();
+        longestORFs = new ArrayList<>();
     }
     private static void setTotalExpectedFrequencies(){
         for (byte j = 0; j<64;j++){
@@ -50,11 +51,11 @@ class AnalyseSequence {
         }
     }
     private static void clearFrameArrays(){
-        trinucFreqFrame1Temp.clear();
-        trinucFreqFrame2Temp.clear();
-        trinucFreqFrame3Temp.clear();
-        dinucFreqFrame1Temp.clear();
-        dinucFreqFrame2Temp.clear();
+        trinucFreqFrame1Temp = new ArrayList<>();
+        trinucFreqFrame2Temp = new ArrayList<>();
+        trinucFreqFrame3Temp = new ArrayList<>();
+        dinucFreqFrame1Temp = new ArrayList<>();
+        dinucFreqFrame2Temp = new ArrayList<>();
     }
 
     private static float gCcount(String seq){
@@ -198,7 +199,7 @@ class AnalyseSequence {
 
     private static void chiSquare(){
         float exp;
-        byte count = 0;
+        short count = 0;
         for (ArrayList<Short> observedArray :allPermutationFreqArrays) {
             float chiT = 0;
             if (observedArray.size() == 64){
@@ -242,10 +243,12 @@ class AnalyseSequence {
         Collections.sort(longestORFs);
         orfPValues.addAll(observedLongestORFs.stream().map(h -> (1 - (longestORFs.indexOf(h) / (float) longestORFs.size()))).collect(Collectors.toList()));
         newSeq.setOrfPvalues(orfPValues);
-
         ArrayList<Float> motifFrequenciesT = new ArrayList<>();
         ArrayList<Float> motifFrequenciesD = new ArrayList<>();
+        long start = System.currentTimeMillis();
         motifFrequenciesT.addAll(observedChiValuesT.stream().map(h -> (1 - (expectedChiValuesT.indexOf(h) / (float) expectedChiValuesT.size()))).collect(Collectors.toList()));
+        long stop = System.currentTimeMillis() - start;
+        System.out.println(stop + " ------- timer ");
         motifFrequenciesD.addAll(observedChiValuesD.stream().map(h -> (1 - (expectedChiValuesD.indexOf(h) / (float) expectedChiValuesD.size()))).collect(Collectors.toList()));
         newSeq.setMotifPValues(motifFrequenciesT, motifFrequenciesD);
 
