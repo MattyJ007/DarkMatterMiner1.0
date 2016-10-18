@@ -17,8 +17,10 @@ public class DMMController {
     private static int maxMotifLen = 10;
     private static int ignoreShortSeq = 20;
     private static String inputFolder;
-    private final ProgressNumber progressFile = new ProgressNumber();
-    private final ProgressNumber progressFolder = new ProgressNumber();
+    private final ProgressCheck progressFile = new ProgressCheck();
+    private final ProgressCheck progressFolder = new ProgressCheck();
+    //** Variable has both a String value and double value
+//    private final ProgressCheck progressString = new ProgressCheck();
     //** Getters and Setters of above variables^^^
     @FXML
     public Button runButt;
@@ -55,6 +57,7 @@ public class DMMController {
             try{
                 fileProgress.progressProperty().bind(progressFile.progressNumProperty());
                 folderProgress.progressProperty().bind(progressFolder.progressNumProperty());
+//                userOutput.textProperty().bind(progressString.progressStringProperty());
                 Metagenome.create(getInputFolder(),isSecureRandom(), progressFile, progressFolder);
             }
             catch (Exception e){

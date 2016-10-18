@@ -245,13 +245,9 @@ class AnalyseSequence {
         newSeq.setOrfPvalues(orfPValues);
         ArrayList<Float> motifFrequenciesT = new ArrayList<>();
         ArrayList<Float> motifFrequenciesD = new ArrayList<>();
-        long start = System.currentTimeMillis();
         motifFrequenciesT.addAll(observedChiValuesT.stream().map(h -> (1 - (expectedChiValuesT.indexOf(h) / (float) expectedChiValuesT.size()))).collect(Collectors.toList()));
-        long stop = System.currentTimeMillis() - start;
-        System.out.println(stop + " ------- timer ");
         motifFrequenciesD.addAll(observedChiValuesD.stream().map(h -> (1 - (expectedChiValuesD.indexOf(h) / (float) expectedChiValuesD.size()))).collect(Collectors.toList()));
         newSeq.setMotifPValues(motifFrequenciesT, motifFrequenciesD);
-
     }
 
     private static void getORFLoci(ArrayList<ArrayList<Short>> orfindeces, short len){

@@ -56,13 +56,13 @@
                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
                         <Label prefHeight="39.0" prefWidth="106.0" text="Min motif length:" />
-                        <TextArea id="minMotifLen" fx:id="minMotifLenx" prefHeight="38.0" prefWidth="87.0" text="4" />
+                        <TextArea id="minMotifLen" fx:id="minMotifLenx" prefHeight="38.0" prefWidth="87.0" text="3" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <children>
                         <Label prefHeight="36.0" prefWidth="106.0" text="Max motif length:" />
-                        <TextArea id="maxMotifLength" fx:id="maxMotifLenx" prefHeight="38.0" prefWidth="103.0" text="10" />
+                        <TextArea id="maxMotifLength" fx:id="maxMotifLenx" prefHeight="38.0" prefWidth="103.0" text="50" />
                     </children>
                 </HBox>
                 <TextArea id="ignoreSmallseq" fx:id="ignoreShortSeqx" prefHeight="200.0" prefWidth="200.0" text="50" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -80,7 +80,7 @@
                     <children>
                         <ScrollPane prefHeight="266.0" prefWidth="660.0">
                             <content>
-                                <TextArea id="userOutput" fx:id="userOutput" prefHeight="264.0" prefWidth="651.0" promptText="Output Console" />
+                                <TextArea id="userOutput" fx:id="userOutput" prefHeight="264.0" prefWidth="651.0" promptText="Output Console. All Parameters set to default. GMATo finds and labels Microsatellites.SecureRandom produces true random numbers however it increases the run time by about 20%.The permutations value indicates the number of new sequences produced from shuffling an original sequence." text="Output Console:&#10; &#10;All Parameters set to default. &#10;GMATo finds and labels Microsatellites.&#10;SecureRandom produces true random numbers however it increases the run time by about 20%.&#10;The permutations value indicates the number of new sequences produced from shuffling an original sequence.&#10;" />
                             </content>
                         </ScrollPane>
                     </children>

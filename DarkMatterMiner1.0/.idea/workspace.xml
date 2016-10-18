@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Default GMATo search parameters changed. Attempted to add a bound stringProperty to keep track of threads but it created an issue - hopefully solved soon.">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/ProgressNumber.java" afterPath="$PROJECT_DIR$/src/sample/ProgressCheck.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/AnalyseSequence.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/AnalyseSequence.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gssr.pl.log" afterPath="$PROJECT_DIR$/gssr.pl.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info.log" afterPath="$PROJECT_DIR$/info.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/AnalyseSequence.java" afterPath="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/DMMController.java" afterPath="$PROJECT_DIR$/src/sample/DMMController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.fxml" afterPath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Metagenome.java" afterPath="$PROJECT_DIR$/src/sample/Metagenome.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -66,11 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DMMController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DMMController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/DMMController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-189">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+            <state relative-caret-position="408">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#runDMM#0;class#DMMController#0" expanded="false" />
@@ -85,16 +89,17 @@
       <file leaf-file-name="Metagenome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="158" column="56" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="56" />
+            <state relative-caret-position="921">
+              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+                <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
                 <element signature="initializer##0;class#Metagenome#0" expanded="false" />
                 <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-                <element signature="e#11144#11169#0" expanded="false" />
+                <element signature="e#11101#11126#0" expanded="false" />
                 <element signature="initializer##1;class#Metagenome#0" expanded="false" />
                 <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
                 <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -105,12 +110,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnalyseSequence.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnalyseSequence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/AnalyseSequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="247" column="48" selection-start-line="247" selection-start-column="48" selection-end-line="247" selection-end-column="48" />
+            <state relative-caret-position="357">
+              <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
               <folding>
+                <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="method#resetArrayListsAndCount#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#clearFrameArrays#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
@@ -118,6 +125,8 @@
                 <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+                <element signature="method#getPvalues#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#getORFLoci#0;class#AnalyseSequence#0" expanded="false" />
                 <element signature="method#getORFLengths#0;class#AnalyseSequence#0" expanded="false" />
               </folding>
@@ -159,10 +168,11 @@
         <option value="$PROJECT_DIR$/src/sample/Sequence.java" />
         <option value="$PROJECT_DIR$/src/sample/DarkMatterMinerMain.java" />
         <option value="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/DMMController.java" />
+        <option value="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
         <option value="$PROJECT_DIR$/src/sample/ProgressNumber.java" />
         <option value="$PROJECT_DIR$/src/sample/Metagenome.java" />
-        <option value="$PROJECT_DIR$/src/sample/AnalyseSequence.java" />
+        <option value="$PROJECT_DIR$/src/sample/ProgressCheck.java" />
+        <option value="$PROJECT_DIR$/src/sample/DMMController.java" />
       </list>
     </option>
   </component>
@@ -652,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476760843791</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Memory issue fixed!!!!!!">
+      <created>1476793004176</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1476793004176</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -669,16 +686,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35582823" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55981594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -725,7 +742,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2392638" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -758,11 +775,13 @@
     <MESSAGE value="All doubles converted to shorts. most ints to longs where possible as well as int to bytes." />
     <MESSAGE value="Memory issue not quite solved. Progress bar added" />
     <MESSAGE value="commit before big edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit before big edit" />
+    <MESSAGE value="Memory issue fixed!!!!!!" />
+    <MESSAGE value="Default GMATo search parameters changed. Attempted to add a bound stringProperty to keep track of threads but it created an issue - hopefully solved soon." />
+    <option name="LAST_COMMIT_MESSAGE" value="Default GMATo search parameters changed. Attempted to add a bound stringProperty to keep track of threads but it created an issue - hopefully solved soon." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="22" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -790,10 +809,11 @@
             <element signature="imports" expanded="true" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11144#11169#0" expanded="false" />
+            <element signature="e#11101#11126#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -832,6 +852,8 @@
         <state relative-caret-position="680">
           <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding>
+            <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#resetArrayListsAndCount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#clearFrameArrays#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
@@ -839,6 +861,8 @@
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getPvalues#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLoci#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLengths#0;class#AnalyseSequence#0" expanded="false" />
           </folding>
@@ -864,10 +888,11 @@
             <element signature="imports" expanded="true" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11144#11169#0" expanded="false" />
+            <element signature="e#11101#11126#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -895,6 +920,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#resetArrayListsAndCount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#clearFrameArrays#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
@@ -902,6 +929,8 @@
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getPvalues#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLoci#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLengths#0;class#AnalyseSequence#0" expanded="false" />
           </folding>
@@ -927,10 +956,11 @@
             <element signature="imports" expanded="true" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11144#11169#0" expanded="false" />
+            <element signature="e#11101#11126#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -958,6 +988,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#resetArrayListsAndCount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#clearFrameArrays#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
@@ -965,6 +997,8 @@
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getPvalues#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLoci#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLengths#0;class#AnalyseSequence#0" expanded="false" />
           </folding>
@@ -990,10 +1024,11 @@
             <element signature="imports" expanded="true" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11144#11169#0" expanded="false" />
+            <element signature="e#11101#11126#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -1130,40 +1165,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ProgressNumber.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        <state relative-caret-position="148">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DMMController.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/ProgressCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#runDMM#0;class#DMMController#0" expanded="false" />
-            <element signature="class#RunClass#0;class#DMMController#0" expanded="false" />
-            <element signature="method#checkUserInput#0;class#DMMController#0" expanded="false" />
-            <element signature="method#perlAndGMAToInstalled#0;class#DMMController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="158" column="56" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="56" />
+        <state relative-caret-position="921">
+          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11144#11169#0" expanded="false" />
+            <element signature="e#11101#11126#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -1173,19 +1205,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/function/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/AnalyseSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="247" column="48" selection-start-line="247" selection-start-column="48" selection-end-line="247" selection-end-column="48" />
+        <state relative-caret-position="357">
+          <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
           <folding>
+            <element signature="method#analyseSequence#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#resetArrayListsAndCount#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#setTotalExpectedFrequencies#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#clearFrameArrays#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#gCcount#0;class#AnalyseSequence#0" expanded="false" />
@@ -1193,8 +1219,24 @@
             <element signature="method#generatePermutations#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getFrequency#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#sortFrequenciesIntoFrames#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#chiSquare#0;class#AnalyseSequence#0" expanded="false" />
+            <element signature="method#getPvalues#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLoci#0;class#AnalyseSequence#0" expanded="false" />
             <element signature="method#getORFLengths#0;class#AnalyseSequence#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DMMController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#runDMM#0;class#DMMController#0" expanded="false" />
+            <element signature="class#RunClass#0;class#DMMController#0" expanded="false" />
+            <element signature="method#checkUserInput#0;class#DMMController#0" expanded="false" />
+            <element signature="method#perlAndGMAToInstalled#0;class#DMMController#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -5,7 +5,7 @@ import java.util.*;
 class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
-    static void create(String inOutFolder, boolean secureRandom, final ProgressNumber progressFile, final ProgressNumber progressFolder){
+    static void create(String inOutFolder, boolean secureRandom, final ProgressCheck progressFile, final ProgressCheck progressFolder){
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
         short folderSize;
@@ -29,14 +29,16 @@ class Metagenome {
                     FileReader reader = new FileReader(file);
                     BufferedReader bread = new BufferedReader(reader);
                     if (bread.readLine() == null){
-                        System.out.println(file.getName() + " is Empty and has been skipped.");
+//                        progressString.setProgressString(file.getName() + " is Empty and has been skipped.");
                         continue;
                     }
                 }
                 catch (Exception e){
                     System.out.println(e.getMessage()+ "----- List object issue " + e.getCause());
                 }
+//                progressString.setProgressString("Finding SSRs...");
                 runGMATo(file);
+//                progressString.setProgressString("Labelling SSRs...");
                 removeSSRs(file);
                 getData(secureRandom, progressFile);
                 try{
@@ -50,7 +52,8 @@ class Metagenome {
                 //**clears sequences of previous file - therefore new file starts with unassigned variable.
             }
         }
-        System.out.println("-------------------------------\n          Complete\n------------------------------");
+//        progressString.setProgressString("-------------------------------\n          Complete\n------------------------------");
+        System.out.println("Complete!!!");
     }
     private static void runGMATo(File input){
         String i = input.getAbsolutePath();
@@ -148,7 +151,7 @@ class Metagenome {
             System.out.println(e.getMessage() + "----------Remove SSRs issue");
         }
     }
-    private static void getData(boolean secureRandom, final ProgressNumber progressFile){
+    private static void getData(boolean secureRandom, final ProgressCheck progressFile){
         try {
             //** Counts number of seqs in file for progress output
             int lineCount = 0;
@@ -156,13 +159,9 @@ class Metagenome {
             //** Not necessary - just useful to see progress
             //** Iterates through all valid sequences
             for (Sequence newSequence:sequences) {
-                long start = System.currentTimeMillis();
                 AnalyseSequence.analyseSequence(newSequence, secureRandom);
-                long stop = System.currentTimeMillis() - start;
-                System.out.println(stop + "    ===== Analysis time ");
                 lineCount++;
                 progressFile.setProgressNum(lineCount/((double) totSeqNum));
-//                System.out.println(lineCount/(double)totSeqNum);
             }
         }
         catch (Exception e){
