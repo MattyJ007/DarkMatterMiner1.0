@@ -1,15 +1,26 @@
 package sample;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-
 public class DMMController {
+    //**Launches DarkMatterMiner GUI
+//    public void start(Stage primaryStage) throws Exception{
+//        Parent root = FXMLLoader.load(getClass().getResource("DarkMatterMinerUI.fxml"));
+//        Scene scene = new Scene(root);
+//        primaryStage.setTitle("Dark Matter Miner 1.0");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//        primaryStage.setOnCloseRequest(t -> System.exit(0));
+//    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+
     private static boolean start; //** variable that prevents launching Metagenome if User settings aren't correct
     private static boolean secureRandom; //** Allows user to use either Random() or SecureRandom()
     private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
@@ -19,6 +30,8 @@ public class DMMController {
     private static int maxMotifLen = 10;
     private static int ignoreShortSeq = 20;
     private static String inputFolder;
+    private final ProgressNumber progressFile = new ProgressNumber();
+    private final ProgressNumber progressFolder = new ProgressNumber();
     //** Getters and Setters of above variables^^^
     @FXML
     public Button runButt;
@@ -32,6 +45,8 @@ public class DMMController {
     public TextArea ignoreShortSeqx;
     public TextArea inputFolderx;
     public TextArea userOutput;
+    public ProgressBar fileProgress;
+    public ProgressBar folderProgress;
 
     public void runDMM(){
         userOutput.setText("Checking entries...");
@@ -46,11 +61,14 @@ public class DMMController {
             runButt.setDisable(true);
         }
     }
+
     private class RunClass implements Runnable{
         @Override
         public void run() {
             try{
-                Metagenome.create(getInputFolder(),isSecureRandom());
+                fileProgress.progressProperty().bind(progressFile.progressNumProperty());
+                folderProgress.progressProperty().bind(progressFolder.progressNumProperty());
+                Metagenome.create(getInputFolder(),isSecureRandom(), progressFile, progressFolder);
             }
             catch (Exception e){
                 System.out.println(e.getMessage() + "Run issue");
@@ -59,7 +77,7 @@ public class DMMController {
     }
 
     public void helpDMM(){
-        userOutput.setText("HELP!!");
+        userOutput.setText("HELP!!" + progressFile.getProgressNum());
     }
 
     private static void setStart(boolean startT) {

@@ -1,24 +1,47 @@
 package sample;
+import javafx.scene.control.ProgressBar;
+
 import java.io.*;
+import java.nio.BufferUnderflowException;
 import java.util.*;
 
 class Metagenome {
     //**Stores all data on every sequence
     private static ArrayList<Sequence> sequences = new ArrayList<>();
-    static void create(String inOutFolder, boolean secureRandom){
+    static void create(String inOutFolder, boolean secureRandom, final ProgressNumber progressFile, final ProgressNumber progressFolder){
         File folder = new File(inOutFolder);
         File[] listOfFilesTemp = folder.listFiles();
-
+        short folderSize;
+        short fileCount = 0;
         assert listOfFilesTemp != null;
+        for(File file: listOfFilesTemp) {
+            if (file.getName().substring(file.getName().length() - 4).equals(".fas") || file.getName().substring(file.getName().length() - 4).equals("asta")) {
+                fileCount++;
+            }
+        }
+        folderSize = fileCount;
+        fileCount = 0;
 
         for(File file: listOfFilesTemp){
-
+            fileCount++;
+            progressFolder.setProgressNum(fileCount/((double) folderSize));
             //** inputs fas and fasta files into gmato. prevents other files being submitted accidently
             if (file.getName().substring(file.getName().length()-4).equals(".fas") || file.getName().substring(file.getName().length()-4).equals("asta")) {
                 //** java running perl through command line to run GMATo
+                try {
+                    FileReader reader = new FileReader(file);
+                    BufferedReader bread = new BufferedReader(reader);
+                    if (bread.readLine() == null){
+                        System.out.println(file.getName() + " is Empty and has been skipped.");
+                        continue;
+                    }
+                }
+                catch (Exception e){
+                    System.out.println(e.getMessage()+ "----- List object issue " + e.getCause());
+                }
                 runGMATo(file);
                 removeSSRs(file);
-                getData(secureRandom);
+                getData(secureRandom, progressFile);
                 try{
                     getRankings();
                 }
@@ -27,6 +50,7 @@ class Metagenome {
                 }
                 outputData(file);
                 sequences.clear();
+                //**clears sequences of previous file - therefore new file starts with unassigned variable.
             }
         }
         System.out.println("-------------------------------\n          Complete\n------------------------------");
@@ -120,15 +144,14 @@ class Metagenome {
                         raw  = new Sequence(seqName,seqLine,(short) seqLine.length());
                         sequences.add(raw);
                     }
-
                 }
             }
         }
         catch (Exception e){
-            System.out.println(e.getMessage() + "Remove SSRs issue");
+            System.out.println(e.getMessage() + "----------Remove SSRs issue");
         }
     }
-    private static void getData(boolean secureRandom){
+    private static void getData(boolean secureRandom, final ProgressNumber progressFile){
         try {
             //** Counts number of seqs in file for progress output
             int lineCount = 0;
@@ -138,9 +161,8 @@ class Metagenome {
             for (Sequence newSequence:sequences) {
                 AnalyseSequence.analyseSequence(newSequence, secureRandom);
                 lineCount++;
-                System.out.println(lineCount+"/"+totSeqNum+"\n------");
+                progressFile.setProgressNum(lineCount/((double) totSeqNum));
             }
-            //** clears sequences of previous file - therefore new file starts with unassigned variable.
         }
         catch (Exception e){
             System.out.println(e.getMessage()+"\n^^^^^^ Metagenome getData");
