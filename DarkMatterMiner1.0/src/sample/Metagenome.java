@@ -291,7 +291,12 @@ class Metagenome {
         String codon;
         for (int i = frame; i < seq.getLength() - 2; i+=3) {
             codon = temp.substring(i, i+3);
-            finalreturn.append(codonsMap.get(codon));
+            if(codon.contains("N") || codon.contains("n")){
+                finalreturn.append("^");
+            }
+            else {
+                finalreturn.append(codonsMap.get(codon));
+            }
         }
         seq.setTranslatedAA(finalreturn.toString());
     }
@@ -331,7 +336,12 @@ class Metagenome {
         String codon;
         for (int i = frame; i < seq.getLength(); i++) {
             codon = temp.substring(i, i+1);
-            finalreturn.append(mRNA.get(codon));
+            if(codon.contains("N")){
+                finalreturn.append("NNN");
+            }
+            else{
+                finalreturn.append(mRNA.get(codon));
+            }
         }
         seq.setTranscribedmRNA(finalreturn.toString());
     }
@@ -341,8 +351,7 @@ class Metagenome {
         compliments.put("T","A");
         compliments.put("C","G");
         compliments.put("G","C");
-
-
+        compliments.put("N","N");
     }
     private static String compliment(Sequence seq){
         String temp = seq.getRawSeq();
@@ -389,7 +398,7 @@ class Metagenome {
         ) {
             writerCSV.write(labelString);
             for(int best = 0; best < ( sequences.size() * DMMController.getTopResults()); best++){
-                writerFas.write(sequences.get(best).getFasSeqInfo() + "\n");
+                writerFas.write(sequences.get(best).getFasSeqInfo());
                 translate(sequences.get(best));
                 transcribe(sequences.get(best));
             }
@@ -400,6 +409,5 @@ class Metagenome {
         catch (Exception e){
             System.out.println(e.getMessage() + " - - - - - outputData");
         }
-
     }
 }
