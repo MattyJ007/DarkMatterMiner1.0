@@ -94,8 +94,7 @@ class Metagenome {
                     }
                 }
             }
-
-            int match = 0;
+            boolean match = false;
             Sequence raw;
             String seqName = "";
             while (true) {
@@ -105,20 +104,20 @@ class Metagenome {
                 }
                 else {
                     if (seqLine.charAt(0) == '>') {
-                        match = 0;
+                        match = false;
                         for (String name : noSSRFilenames) {
                             if (seqLine.equals(name)) {
-                                match = 1;
+                                match = true;
                                 break;
                             }
                         }
-                        if (match == 0) {
+                        if (!match) {
                             seqName = seqLine;
                         }
                     }
                     //** Sequence objects are created and added to Metagenome
-                    else if(match == 0 && seqLine.length() > DMMController.getIgnoreShortSeq() ){
-                        raw  = new Sequence(seqName,seqLine,seqLine.length());
+                    else if(!match && seqLine.length() > DMMController.getIgnoreShortSeq() ){
+                        raw  = new Sequence(seqName,seqLine,(short) seqLine.length());
                         sequences.add(raw);
                     }
 
@@ -126,7 +125,7 @@ class Metagenome {
             }
         }
         catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "Remove SSRs issue");
         }
     }
     private static void getData(boolean secureRandom){

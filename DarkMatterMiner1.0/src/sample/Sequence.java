@@ -5,12 +5,14 @@ class Sequence {
     //** Attributes of sequence
     private String name, rawSeq,translatedAA, transcribedmRNA;
 //    String microsatelliteMotif;
-    private int length, rankTri, rankBestORFframeTri,rankDi, rankOrf, rankTot, frameWithLongestORF;
-//    int numSSRrepeats, sSRstartloci,
-    private double gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
+    private short length;
+    private byte frameWithLongestORF;
+    private int rankTot, rankTri,rankDi, rankOrf, rankBestORFframeTri;
+//    short numSSRrepeats, sSRstartloci,
+    private float gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
 //    private boolean microsatellite;
 
-    Sequence(String name, String raw, int len){
+    Sequence(String name, String raw, short len){
         //** initialises Sequence objects with basic information before statistical analysis
         this.name = name;
         rawSeq = raw;
@@ -42,23 +44,23 @@ class Sequence {
         return rawSeq;
     }
 
-    int getFrameWithLongestORF() {
+    short getFrameWithLongestORF() {
         return frameWithLongestORF;
     }
 
-    int getLength(){
+    short getLength(){
         return length;
     }
 
-    double getDinucleotidePValue() {
+    float getDinucleotidePValue() {
         return dinucleotidePValue;
     }
 
-    double getTrinucelotidePValue() {
+    float getTrinucelotidePValue() {
         return trinucelotidePValue;
     }
 
-    double getOrfLengthPValue() {
+    float getOrfLengthPValue() {
         return orfLengthPValue;
     }
 
@@ -66,7 +68,7 @@ class Sequence {
         this.rankTri = rankTri;
     }
 
-    void setRankBestORFframeTri(int rankBestORFframeTri) {
+    void setRankBestORFframeTri( int rankBestORFframeTri) {
         this.rankBestORFframeTri = rankBestORFframeTri;
     }
 
@@ -79,7 +81,7 @@ class Sequence {
     }
 
     void setRankTot() {
-        this.rankTot = rankDi + rankTri + rankOrf;
+        this.rankTot =  rankDi + rankTri + rankOrf;
     }
 
     int getRankTot() {
@@ -97,17 +99,17 @@ class Sequence {
 //    public void setMicrosatelliteMotif(String microsatelliteMotif) {
 //        this.microsatelliteMotif = microsatelliteMotif;
 //    }
-//    public void setNumSSRrepeats(int numSSRrepeats) {
+//    public void setNumSSRrepeats(short numSSRrepeats) {
 //        this.numSSRrepeats = numSSRrepeats;
 //    }
-//    public void setsSRstartloci(int sSRstartloci) {
+//    public void setsSRstartloci(short sSRstartloci) {
 //        this.sSRstartloci = sSRstartloci;
 //    }
-    void setGcContent(double gcContent) {
+    void setGcContent(float gcContent) {
         this.gcContent = gcContent;
     }
-    void setOrfPvalues(ArrayList<Double> pValues){
-        frameWithLongestORF = pValues.indexOf((Collections.min(pValues)));
+    void setOrfPvalues(ArrayList<Float> pValues){
+        frameWithLongestORF = (byte) pValues.indexOf((Collections.min(pValues)));
         orfLengthPValue = Collections.min(pValues);
         orfLenP1 = pValues.get(0);
         orfLenP2 = pValues.get(1);
@@ -116,7 +118,7 @@ class Sequence {
         orfLenP5 = pValues.get(4);
         orfLenP6 = pValues.get(5);
     }
-    void setMotifPValues(ArrayList<Double> pValues1, ArrayList<Double> pValues2){
+    void setMotifPValues(ArrayList<Float> pValues1, ArrayList<Float> pValues2){
         trinucelotidePValue = Collections.min(pValues1);
         trinuc1 = pValues1.get(0);
         trinuc2 = pValues1.get(1);

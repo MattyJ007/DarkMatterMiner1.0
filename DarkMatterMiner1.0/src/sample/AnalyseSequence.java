@@ -16,21 +16,21 @@ class AnalyseSequence {
         chiSquare();
         getPvalues(newSeq);
     }
-    private static Integer[] totalExpectedFrequenciesTri = new Integer[64];
-    private static Integer[] totalExpectedFrequenciesDi = new Integer[16];
-    private static ArrayList<ArrayList<Integer>> allPermutationFreqArrays = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<Integer> trinucFreqFrame3Temp = new ArrayList<>();
-    private static ArrayList<Integer> dinucFreqFrame1Temp = new ArrayList<>();
-    private static ArrayList<Integer> dinucFreqFrame2Temp = new ArrayList<>();
-    private static ArrayList<Double> observedChiValuesT = new ArrayList<>();
-    private static ArrayList<Double> expectedChiValuesT = new ArrayList<>();
-    private static ArrayList<Double> observedChiValuesD = new ArrayList<>();
-    private static ArrayList<Double> expectedChiValuesD = new ArrayList<>();
-    private static ArrayList<Integer> longestORFs = new ArrayList<>();
-    private static ArrayList<Integer> observedLongestORFs = new ArrayList<>();
-    private static int countForObservedORFs;
+    private static Short[] totalExpectedFrequenciesTri = new Short[64];
+    private static Short[] totalExpectedFrequenciesDi = new Short[16];
+    private static ArrayList<ArrayList<Short>> allPermutationFreqArrays = new ArrayList<>();
+    private static ArrayList<Short> trinucFreqFrame1Temp = new ArrayList<>();
+    private static ArrayList<Short> trinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<Short> trinucFreqFrame3Temp = new ArrayList<>();
+    private static ArrayList<Short> dinucFreqFrame1Temp = new ArrayList<>();
+    private static ArrayList<Short> dinucFreqFrame2Temp = new ArrayList<>();
+    private static ArrayList<Float> observedChiValuesT = new ArrayList<>();
+    private static ArrayList<Float> expectedChiValuesT = new ArrayList<>();
+    private static ArrayList<Float> observedChiValuesD = new ArrayList<>();
+    private static ArrayList<Float> expectedChiValuesD = new ArrayList<>();
+    private static ArrayList<Short> longestORFs = new ArrayList<>();
+    private static ArrayList<Short> observedLongestORFs = new ArrayList<>();
+    private static byte countForObservedORFs;
 
     private static void resetArrayListsAndCount(){
         observedChiValuesT.clear();
@@ -42,10 +42,10 @@ class AnalyseSequence {
         longestORFs.clear();
     }
     private static void setTotalExpectedFrequencies(){
-        for (int j = 0; j<64;j++){
+        for (byte j = 0; j<64;j++){
             totalExpectedFrequenciesTri[j] = 0;
         }
-        for (int j = 0; j<16;j++){
+        for (byte j = 0; j<16;j++){
             totalExpectedFrequenciesDi[j] = 0;
         }
     }
@@ -57,17 +57,17 @@ class AnalyseSequence {
         dinucFreqFrame2Temp.clear();
     }
 
-    private static double gCcount(String seq){
+    private static float gCcount(String seq){
         //** gets GC content of each sequence
-        int countGC = countMatches(seq, "G") + countMatches(seq, "C");
-        return (double)countGC/seq.length();
+        short countGC = (short) (countMatches(seq, "G") + countMatches(seq, "C"));
+        return (float)countGC/seq.length();
     }
 
-    private static int countMatches(String str, String sub) {
+    private static short countMatches(String str, String sub) {
         if (str.isEmpty() || sub.isEmpty()) {return -1;}
-        int count = 0;
-        int idx = 0;
-        while ((idx = indexOf(str, sub, idx)) != -1) {
+        short count = 0;
+        short idx = 0;
+        while ((idx = (short) indexOf(str, sub, idx)) != -1) {
             count++;
             idx += sub.length();
         }
@@ -75,22 +75,22 @@ class AnalyseSequence {
     }
 
     private static void generatePermutations(String newSeq, boolean secureRandom){
-        int permutations = DMMController.getPermutations();
+        short permutations = (short) DMMController.getPermutations();
         SecureRandom sRand;
         Random nRand;
-        int randomNum;
-        int len;
+        short randomNum;
+        short len;
         String temp;
         String randSeq;
         String[] seq;
         getFrequency(newSeq);
         if (secureRandom) {
             sRand = new SecureRandom();
-            for (int j = 0; j< permutations; j++){
-                len = newSeq.length();
+            for (short j = 0; j< permutations; j++){
+                len = (short) newSeq.length();
                 seq = newSeq.split("");
-                for (int i=0; i<len; i++){
-                    randomNum = sRand.nextInt(len);
+                for (short i=0; i<len; i++){
+                    randomNum = (short) sRand.nextInt(len);
                     temp = seq[i];
                     seq[i] = seq[randomNum];
                     seq[randomNum] = temp;
@@ -101,11 +101,11 @@ class AnalyseSequence {
         }
         else {
             nRand = new Random();
-            for (int j = 0; j< permutations; j++){
-                len = newSeq.length();
+            for (short j = 0; j< permutations; j++){
+                len = (short) newSeq.length();
                 seq = newSeq.split("");
-                for (int i=0; i<len; i++){
-                    randomNum = nRand.nextInt(len);
+                for (short i=0; i<len; i++){
+                    randomNum = (short) nRand.nextInt(len);
                     temp = seq[i];
                     seq[i] = seq[randomNum];
                     seq[randomNum] = temp;
@@ -118,38 +118,38 @@ class AnalyseSequence {
 
     private static void getFrequency(String seq){
         clearFrameArrays();
-        ArrayList<ArrayList<Integer>> orfindeces = new ArrayList<>();
-        ArrayList<ArrayList<Integer>> unsortedMotifFrequencies = new ArrayList<>();
+        ArrayList<ArrayList<Short>> orfindeces = new ArrayList<>();
+        ArrayList<ArrayList<Short>> unsortedMotifFrequencies = new ArrayList<>();
         String motifString = "AAA,AAT,AAG,AAC,ATA,ATT,ATG,ATC,AGA,AGT,AGG,AGC,ACA,ACT,ACG,ACC,TAA,TAT,TAG,TAC,TTA,TTT,TTG,TTC,TGA,TGT,TGG,TGC,TCA,TCT,TCG,TCC,GAA,GAT,GAG,GAC,GTA,GTT,GTG,GTC,GGA,GGT,GGG,GGC,GCA,GCT,GCG,GCC,CAA,CAT,CAG,CAC,CTA,CTT,CTG,CTC,CGA,CGT,CGG,CGC,CCA,CCT,CCG,CCC,AA,AT,AG,AC,TA,TT,TG,TC,GA,GT,GG,GC,CA,CT,CG,CC";
-        Integer[] stopCodons = {16,18,20,24,28,52};
+        Short[] stopCodons = {16,18,20,24,28,52};
         String[] motifList = motifString.split(",");
         for (String motif: motifList){
-            ArrayList<Integer> motifIndeces = new ArrayList<>();
-            int index = seq.indexOf(motif);
+            ArrayList<Short> motifIndeces = new ArrayList<>();
+            short index = (short) seq.indexOf(motif);
             while(index >= 0) {
                 motifIndeces.add(index);
-                index = seq.indexOf(motif, index+1);
+                index = (short) seq.indexOf(motif, index+1);
             }
             unsortedMotifFrequencies.add(motifIndeces);
         }
-        for (int d: stopCodons){
+        for (short d: stopCodons){
             orfindeces.add(unsortedMotifFrequencies.get(d));
         }
-        getORFLoci(orfindeces, seq.length());
+        getORFLoci(orfindeces, (short) seq.length());
         sortFrequenciesIntoFrames(unsortedMotifFrequencies);
     }
 
-    private static void sortFrequenciesIntoFrames(ArrayList<ArrayList<Integer>> unsortedMotifFrequencies){
-        int frame;
-        for (int j = 0; j<80; j++){
-            int motifFrameT1 = 0;
-            int motifFrameT2 = 0;
-            int motifFrameT3 = 0;
-            int motifFrameD1 = 0;
-            int motifFrameD2 = 0;
+    private static void sortFrequenciesIntoFrames(ArrayList<ArrayList<Short>> unsortedMotifFrequencies){
+        byte frame;
+        for (short j = 0; j<80; j++){
+            short motifFrameT1 = 0;
+            short motifFrameT2 = 0;
+            short motifFrameT3 = 0;
+            short motifFrameD1 = 0;
+            short motifFrameD2 = 0;
             if(j<64){
-                for(int motifIndex: unsortedMotifFrequencies.get(j)) {
-                    frame = motifIndex % 3;
+                for(short motifIndex: unsortedMotifFrequencies.get(j)) {
+                    frame = (byte) (motifIndex % 3);
                     if (frame == 0) {
                         motifFrameT1++;
                     }
@@ -165,8 +165,8 @@ class AnalyseSequence {
                 trinucFreqFrame3Temp.add(motifFrameT3);
             }
             else{
-                for(int motifIndex: unsortedMotifFrequencies.get(j)) {
-                    frame = motifIndex % 2;
+                for(short motifIndex: unsortedMotifFrequencies.get(j)) {
+                    frame = (byte) (motifIndex % 2);
                     if (frame == 0) {
                         motifFrameD1++;
                     }
@@ -178,17 +178,17 @@ class AnalyseSequence {
                 dinucFreqFrame2Temp.add(motifFrameD2);
             }
         }
-        for(int i = 0; i<64; i++) {
-            totalExpectedFrequenciesTri[i] += trinucFreqFrame1Temp.get(i) + trinucFreqFrame2Temp.get(i) + trinucFreqFrame3Temp.get(i);
+        for(byte i = 0; i<64; i++) {
+             (totalExpectedFrequenciesTri[i]) = (short) ((totalExpectedFrequenciesTri[i]) +trinucFreqFrame1Temp.get(i) + trinucFreqFrame2Temp.get(i) + trinucFreqFrame3Temp.get(i));
         }
-        for(int i = 0; i<16; i++) {
-            totalExpectedFrequenciesDi[i] += dinucFreqFrame1Temp.get(i) + dinucFreqFrame2Temp.get(i);
+        for(byte i = 0; i<16; i++) {
+            totalExpectedFrequenciesDi[i] = (short) (totalExpectedFrequenciesDi[i] + dinucFreqFrame1Temp.get(i) + dinucFreqFrame2Temp.get(i));
         }
-        ArrayList<Integer> trinucFreqFrame1 = new ArrayList<>(trinucFreqFrame1Temp);
-        ArrayList<Integer> trinucFreqFrame2 = new ArrayList<>(trinucFreqFrame2Temp);
-        ArrayList<Integer> trinucFreqFrame3 = new ArrayList<>(trinucFreqFrame3Temp);
-        ArrayList<Integer> dinucFreqFrame1 = new ArrayList<>(dinucFreqFrame1Temp);
-        ArrayList<Integer> dinucFreqFrame2 = new ArrayList<>(dinucFreqFrame2Temp);
+        ArrayList<Short> trinucFreqFrame1 = new ArrayList<>(trinucFreqFrame1Temp);
+        ArrayList<Short> trinucFreqFrame2 = new ArrayList<>(trinucFreqFrame2Temp);
+        ArrayList<Short> trinucFreqFrame3 = new ArrayList<>(trinucFreqFrame3Temp);
+        ArrayList<Short> dinucFreqFrame1 = new ArrayList<>(dinucFreqFrame1Temp);
+        ArrayList<Short> dinucFreqFrame2 = new ArrayList<>(dinucFreqFrame2Temp);
         allPermutationFreqArrays.add(trinucFreqFrame1);
         allPermutationFreqArrays.add(trinucFreqFrame2);
         allPermutationFreqArrays.add(trinucFreqFrame3);
@@ -197,13 +197,13 @@ class AnalyseSequence {
     }
 
     private static void chiSquare(){
-        double exp;
-        int count = 0;
-        for (ArrayList<Integer> observedArray :allPermutationFreqArrays) {
-            double chiT = 0;
+        float exp;
+        byte count = 0;
+        for (ArrayList<Short> observedArray :allPermutationFreqArrays) {
+            float chiT = 0;
             if (observedArray.size() == 64){
-                for(int n = 0; n<64;n++){
-                    exp = (totalExpectedFrequenciesTri[n]-observedArray.get(n))/((double) (DMMController.getPermutations()*3)+2);
+                for(short n = 0; n<64;n++){
+                    exp = (totalExpectedFrequenciesTri[n]-observedArray.get(n))/((float) (DMMController.getPermutations()*3)+2);
 //                    System.out.println(exp + " = " + totalExpectedFrequenciesTri[n]+" - "+ observedArray.get(n)+" / "+ DarkMatterMinerMain.getPermutations()+" * 3" + " + 2");
                     chiT += Math.pow(exp - observedArray.get(n),2)/exp;
 //                    System.out.println(chi + " +=( " +exp + " - "+observedArray.get(n)+")**2/ "+exp );
@@ -217,10 +217,10 @@ class AnalyseSequence {
                     expectedChiValuesT.add(chiT);
                 }
             }
-            double chiD = 0;
+            float chiD = 0;
             if(observedArray.size() == 16){
-                for(int n = 0; n<16;n++){
-                    exp = (totalExpectedFrequenciesDi[n]-observedArray.get(n))/((double) (DMMController.getPermutations()*2)+1);
+                for(short n = 0; n<16;n++){
+                    exp = (totalExpectedFrequenciesDi[n]-observedArray.get(n))/((float) (DMMController.getPermutations()*2)+1);
                     chiD += Math.pow(exp - observedArray.get(n),2)/exp;
                 }
                 if (count>=3 && count<5){
@@ -238,56 +238,58 @@ class AnalyseSequence {
     }
 
     private static void getPvalues(Sequence newSeq){
-        ArrayList<Double> orfPValues = new ArrayList<>();
+        ArrayList<Float> orfPValues = new ArrayList<>();
         Collections.sort(longestORFs);
-        orfPValues.addAll(observedLongestORFs.stream().map(h -> (1 - (longestORFs.indexOf(h) / (double) longestORFs.size()))).collect(Collectors.toList()));
+        orfPValues.addAll(observedLongestORFs.stream().map(h -> (1 - (longestORFs.indexOf(h) / (float) longestORFs.size()))).collect(Collectors.toList()));
         newSeq.setOrfPvalues(orfPValues);
 
-        ArrayList<Double> motifFrequenciesT = new ArrayList<>();
-        ArrayList<Double> motifFrequenciesD = new ArrayList<>();
-        motifFrequenciesT.addAll(observedChiValuesT.stream().map(h -> (1 - (expectedChiValuesT.indexOf(h) / (double) expectedChiValuesT.size()))).collect(Collectors.toList()));
-        motifFrequenciesD.addAll(observedChiValuesD.stream().map(h -> (1 - (expectedChiValuesD.indexOf(h) / (double) expectedChiValuesD.size()))).collect(Collectors.toList()));
+        ArrayList<Float> motifFrequenciesT = new ArrayList<>();
+        ArrayList<Float> motifFrequenciesD = new ArrayList<>();
+        motifFrequenciesT.addAll(observedChiValuesT.stream().map(h -> (1 - (expectedChiValuesT.indexOf(h) / (float) expectedChiValuesT.size()))).collect(Collectors.toList()));
+        motifFrequenciesD.addAll(observedChiValuesD.stream().map(h -> (1 - (expectedChiValuesD.indexOf(h) / (float) expectedChiValuesD.size()))).collect(Collectors.toList()));
         newSeq.setMotifPValues(motifFrequenciesT, motifFrequenciesD);
 
     }
 
-    private static void getORFLoci(ArrayList<ArrayList<Integer>> orfindeces, int len){
+    private static void getORFLoci(ArrayList<ArrayList<Short>> orfindeces, short len){
         //** values in arrays indicate the starting loci of stop codons
-        int numberOfCodons = len%3;
-        ArrayList<Integer> stopCodonsFrame1F;
-        ArrayList<Integer> stopCodonsFrame2F;
-        ArrayList<Integer> stopCodonsFrame3F;
-        ArrayList<Integer> stopCodonsFrame1R;
-        ArrayList<Integer> stopCodonsFrame2R;
-        ArrayList<Integer> stopCodonsFrame3R;
+        short len1 = (short) (len-1);
+        short len2 = (short) (len-2);
+        byte numberOfCodons = (byte) (len%3);
+        ArrayList<Short> stopCodonsFrame1F;
+        ArrayList<Short> stopCodonsFrame2F;
+        ArrayList<Short> stopCodonsFrame3F;
+        ArrayList<Short> stopCodonsFrame1R;
+        ArrayList<Short> stopCodonsFrame2R;
+        ArrayList<Short> stopCodonsFrame3R;
         if (numberOfCodons == 0) {
-            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3,len));
-            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2,len-2));
-            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1,len-1));
-            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3,len));
-            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2,len-2));
-            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1,len-1));
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList((short)-3,len));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList((short)-2,len2));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList((short)-1,len1));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList((short)-3,len));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList((short)-2,len2));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList((short)-1,len1));
         }
         else if(numberOfCodons ==1){
-            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3, len-1));
-            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2, len));
-            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1, len-2));
-            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3, len-1));
-            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2, len));
-            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1, len-2));
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList((short)-3,len1));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList((short)-2, len));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList((short)-1, len2));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList((short)-3, len1));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList((short)-2, len));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList((short)-1, len2));
         }
         else{
-            stopCodonsFrame1F = new ArrayList<>(Arrays.asList(-3, len-2));
-            stopCodonsFrame2F = new ArrayList<>(Arrays.asList(-2, len-1));
-            stopCodonsFrame3F = new ArrayList<>(Arrays.asList(-1, len));
-            stopCodonsFrame1R = new ArrayList<>(Arrays.asList(-3, len-2));
-            stopCodonsFrame2R = new ArrayList<>(Arrays.asList(-2, len-1));
-            stopCodonsFrame3R = new ArrayList<>(Arrays.asList(-1, len));
+            stopCodonsFrame1F = new ArrayList<>(Arrays.asList((short)-3, len2));
+            stopCodonsFrame2F = new ArrayList<>(Arrays.asList((short)-2, len1));
+            stopCodonsFrame3F = new ArrayList<>(Arrays.asList((short)-1, len));
+            stopCodonsFrame1R = new ArrayList<>(Arrays.asList((short)-3, len2));
+            stopCodonsFrame2R = new ArrayList<>(Arrays.asList((short)-2, len1));
+            stopCodonsFrame3R = new ArrayList<>(Arrays.asList((short)-1, len));
         }
-        int frame;
-        for(int c = 0; c<6; c++){
-            for (int locus: orfindeces.get(c)){
-                frame = locus%3;
+        byte frame;
+        for(short c = 0; c<6; c++){
+            for (short locus: orfindeces.get(c)){
+                frame = (byte) (locus%3);
                 if (c <3 ){
                     if (frame == 0){
                         stopCodonsFrame1F.add(locus);
@@ -326,18 +328,18 @@ class AnalyseSequence {
         getORFLengths(stopCodonsFrame3R);
     }
 
-    private static void getORFLengths(ArrayList<Integer> stopCodons){
-        int tempLocus1;
-        int tempLocus2 = 0;
-        int tempLocus3;
-        int lengthOfORF = 0;
+    private static void getORFLengths(ArrayList<Short> stopCodons){
+        short tempLocus1;
+        short tempLocus2 = 0;
+        short tempLocus3;
+        short lengthOfORF = 0;
         boolean prepareTempVariables = false;
-        for (int loci: stopCodons){
+        for (short loci: stopCodons){
             tempLocus1 = loci;
             if(prepareTempVariables){
-                tempLocus3 = tempLocus1 - tempLocus2;
+                tempLocus3 = (short) (tempLocus1 - tempLocus2);
                 if(((tempLocus3-3)/3) > lengthOfORF){
-                    lengthOfORF = ((tempLocus3-3)/3);
+                    lengthOfORF = (short) ((tempLocus3-3)/3);
                 }
             }
             else {
