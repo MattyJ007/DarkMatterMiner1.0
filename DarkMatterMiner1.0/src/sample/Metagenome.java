@@ -169,33 +169,10 @@ class Metagenome {
         }
     }
     private static void getRankings()throws Exception{
-//        int metagenomeLength = sequences.size();
-//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.ORFLEN));
-//        Collections.reverse(sequences);
-//        for(int weight = 1; weight<= metagenomeLength; weight++){
-//            sequences.get(weight-1).setRankOrf(weight);
-//        }
-//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TRINUC));
-//        Collections.reverse(sequences);
-//        for(int weight = 1; weight<= metagenomeLength; weight++){
-//            sequences.get(weight-1).setRankTri(weight);
-//        }
-//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.DINUC));
-//        Collections.reverse(sequences);
-//        for(int weight = 1; weight<= metagenomeLength; weight++){
-//            sequences.get(weight-1).setRankDi(weight);
-//        }
-//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.BEST_ORF_TRI_FREQ));
-//        Collections.reverse(sequences);
-//        for(int weight = 1; weight<= metagenomeLength; weight++){
-//            sequences.get(weight-1).setRankBestORFframeTri(weight);
-//            sequences.get(weight-1).setRankTot();
-//        }
         for (Sequence newSeq: sequences){
             newSeq.setRankTot();
         }
         Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TOTRANK));
-//        Collections.reverse(sequences);
     }
     private static final Map<String, Character> codonsMap;
     static {
@@ -377,13 +354,9 @@ class Metagenome {
                 "GC Content\t"+
                 "Frame with Longest ORF\t"+
                 "Longest ORF P-value\t"+
-//                "Longest ORF Rank\t"+
                 "Tri-nuc Freq of Longest ORF Frame P-value\t"+
                 "Best Tri-nuc P-value\t"+
-//                "Rank Tri-nuc Longest ORF\t"+
-//                "Rank Best Tri-nuc\t"+
                 "Best Di-nuc P-value\t" +
-//                "Rank Best Di-nuc\t"+
                 "P-value of ORF lengths frame 1\t" +
                 "P-value of ORF lengths frame 2\t" +
                 "P-value of ORF lengths frame 3\t" +
@@ -401,12 +374,12 @@ class Metagenome {
 //                "Original seq"+
                 "\n";
         try (
-                FileWriter writerCSV = new FileWriter(input+"_DMM.csv")
-//                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
+                FileWriter writerCSV = new FileWriter(input+"_DMM.csv");
+                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
         ) {
             writerCSV.write(labelString);
             for(int best = 0; best < ( sequences.size() * DMMController.getTopResults()); best++){
-//                writerFas.write(sequences.get(best).getFasSeqInfo());
+                writerFas.write(sequences.get(best).getFasSeqInfo());
                 translate(sequences.get(best));
                 transcribe(sequences.get(best));
             }

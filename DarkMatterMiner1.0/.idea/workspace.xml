@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Improved ranking system and reduced number of variables involved.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Metagenome.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Sequence.class" afterPath="$PROJECT_DIR$/out/production/DarkMatterMiner1.0/sample/Sequence.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gssr.pl.log" afterPath="$PROJECT_DIR$/gssr.pl.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info.log" afterPath="$PROJECT_DIR$/info.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.fxml" afterPath="$PROJECT_DIR$/src/sample/DarkMatterMinerUI.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/ItemComparator.java" afterPath="$PROJECT_DIR$/src/sample/ItemComparator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Metagenome.java" afterPath="$PROJECT_DIR$/src/sample/Metagenome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Sequence.java" afterPath="$PROJECT_DIR$/src/sample/Sequence.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,17 +69,18 @@
       <file leaf-file-name="Metagenome.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="193" column="41" selection-start-line="193" selection-start-column="41" selection-end-line="193" selection-end-column="41" />
+            <state relative-caret-position="799">
+              <caret line="376" column="72" selection-start-line="376" selection-start-column="72" selection-end-line="376" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#create#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
                 <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+                <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
                 <element signature="initializer##0;class#Metagenome#0" expanded="false" />
                 <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-                <element signature="e#11492#11517#0" expanded="false" />
+                <element signature="e#10254#10279#0" expanded="false" />
                 <element signature="initializer##1;class#Metagenome#0" expanded="false" />
                 <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
                 <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -186,10 +186,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="1404" />
+    <option name="y" value="21" />
+    <option name="width" value="520" />
+    <option name="height" value="435" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -695,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476890397406</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Improved ranking system and reduced number of variables involved.">
+      <created>1476898112524</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1476898112524</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -711,17 +718,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <frame x="1404" y="21" width="520" height="435" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32829046" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41871166" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.9009901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -842,9 +849,10 @@
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -910,9 +918,10 @@
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -989,9 +998,10 @@
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -1057,9 +1067,10 @@
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -1125,9 +1136,10 @@
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
@@ -1295,17 +1307,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Metagenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="193" column="41" selection-start-line="193" selection-start-column="41" selection-end-line="193" selection-end-column="41" />
+        <state relative-caret-position="799">
+          <caret line="376" column="72" selection-start-line="376" selection-start-column="72" selection-end-line="376" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#create#0;class#Metagenome#0" expanded="false" />
             <element signature="method#runGMATo#0;class#Metagenome#0" expanded="false" />
             <element signature="method#removeSSRs#0;class#Metagenome#0" expanded="false" />
             <element signature="method#getData#0;class#Metagenome#0" expanded="false" />
+            <element signature="method#getRankings#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##0;class#Metagenome#0" expanded="false" />
             <element signature="method#translate#0;class#Metagenome#0" expanded="false" />
-            <element signature="e#11492#11517#0" expanded="false" />
+            <element signature="e#10254#10279#0" expanded="false" />
             <element signature="initializer##1;class#Metagenome#0" expanded="false" />
             <element signature="method#transcribe#0;class#Metagenome#0" expanded="false" />
             <element signature="initializer##2;class#Metagenome#0" expanded="false" />
