@@ -32,24 +32,24 @@ class Metagenome {
 //                        progressString.setProgressString(file.getName() + " is Empty and has been skipped.");
                         continue;
                     }
+                    //                progressString.setProgressString("Finding SSRs...");
+                    runGMATo(file);
+//                progressString.setProgressString("Labelling SSRs...");
+                    removeSSRs(file);
+                    getData(secureRandom, progressFile);
+                    try{
+                        getRankings();
+                    }
+                    catch (Exception e){
+                        System.out.println(e.getMessage() + " ------ getRankings");
+                    }
+                    outputData(file);
+                    sequences.clear();
+                    //**clears sequences of previous file - therefore new file starts with unassigned variable.
                 }
                 catch (Exception e){
                     System.out.println(e.getMessage()+ "----- List object issue " + e.getCause());
                 }
-//                progressString.setProgressString("Finding SSRs...");
-                runGMATo(file);
-//                progressString.setProgressString("Labelling SSRs...");
-                removeSSRs(file);
-                getData(secureRandom, progressFile);
-                try{
-                    getRankings();
-                }
-                catch (Exception e){
-                    System.out.println(e.getMessage() + " ------ getRankings");
-                }
-                outputData(file);
-                sequences.clear();
-                //**clears sequences of previous file - therefore new file starts with unassigned variable.
             }
         }
 //        progressString.setProgressString("-------------------------------\n          Complete\n------------------------------");
@@ -141,7 +141,7 @@ class Metagenome {
                     }
                     //** Sequence objects are created and added to Metagenome
                     else if(!match && seqLine.length() > DMMController.getIgnoreShortSeq() ){
-                        raw  = new Sequence(seqName,seqLine,(short) seqLine.length());
+                        raw  = new Sequence(seqName,seqLine,seqLine.length());
                         sequences.add(raw);
                     }
                 }
@@ -169,25 +169,33 @@ class Metagenome {
         }
     }
     private static void getRankings()throws Exception{
-        int metagenomeLength = sequences.size();
-        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.ORFLEN));
-        for(int weight = 1; weight<= metagenomeLength; weight++){
-            sequences.get(weight-1).setRankOrf(weight);
-        }
-        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TRINUC));
-        for(int weight = 1; weight<= metagenomeLength; weight++){
-            sequences.get(weight-1).setRankTri(weight);
-        }
-        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.BEST_ORF_TRI_FREQ));
-        for(int weight = 1; weight<= metagenomeLength; weight++){
-            sequences.get(weight-1).setRankBestORFframeTri(weight);
-        }
-        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.DINUC));
-        for(int weight = 1; weight<= metagenomeLength; weight++){
-            sequences.get(weight-1).setRankDi(weight);
-            sequences.get(weight-1).setRankTot();
+//        int metagenomeLength = sequences.size();
+//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.ORFLEN));
+//        Collections.reverse(sequences);
+//        for(int weight = 1; weight<= metagenomeLength; weight++){
+//            sequences.get(weight-1).setRankOrf(weight);
+//        }
+//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TRINUC));
+//        Collections.reverse(sequences);
+//        for(int weight = 1; weight<= metagenomeLength; weight++){
+//            sequences.get(weight-1).setRankTri(weight);
+//        }
+//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.DINUC));
+//        Collections.reverse(sequences);
+//        for(int weight = 1; weight<= metagenomeLength; weight++){
+//            sequences.get(weight-1).setRankDi(weight);
+//        }
+//        Collections.sort(sequences, new ItemComparator(ItemComparator.Field.BEST_ORF_TRI_FREQ));
+//        Collections.reverse(sequences);
+//        for(int weight = 1; weight<= metagenomeLength; weight++){
+//            sequences.get(weight-1).setRankBestORFframeTri(weight);
+//            sequences.get(weight-1).setRankTot();
+//        }
+        for (Sequence newSeq: sequences){
+            newSeq.setRankTot();
         }
         Collections.sort(sequences, new ItemComparator(ItemComparator.Field.TOTRANK));
+//        Collections.reverse(sequences);
     }
     private static final Map<String, Character> codonsMap;
     static {
@@ -364,36 +372,36 @@ class Metagenome {
         return complimentrayStrand.toString();
     }
     private static void outputData(File input){
-        String labelString = "Sequence Name\t" +
-                "Length of Sequence\t" +
-                "GC content\t"+
-                "frame with longest ORF\t"+
-                "best ORF p-value\t"+
-                "ORF Rank\t"+
-                "p-value of ORF lengths frame 1\t" +
-                "p-value of ORF lengths frame 2\t" +
-                "p-value of ORF lengths frame 3\t" +
-                "p-value of ORF lengths frame 4\t" +
-                "p-value of ORF lengths frame 5\t" +
-                "p-value of ORF lengths frame 6\t" +
-                "triNuc Freq of Longest ORF frame\t"+
-                "Rank trinuc LongestORF\t"+
-                "best Trinuc P-value\t"+
-                "Rank best Trinuc\t"+
-                "trinucPvalue Frame 1\t"+
-                "trinucPvalue Frame 2\t"+
-                "trinucPvalue Frame 3\t"+
-                "best dinuc P-value\t" +
-                "Rank Best dinuc\t"+
-                "dinucPvalue Frame 1\t"+
-                "dinucPvalue Frame 2\t"+
+        String labelString = "Name\t" +
+                "Length\t" +
+                "GC Content\t"+
+                "Frame with Longest ORF\t"+
+                "Longest ORF P-value\t"+
+//                "Longest ORF Rank\t"+
+                "Tri-nuc Freq of Longest ORF Frame P-value\t"+
+                "Best Tri-nuc P-value\t"+
+//                "Rank Tri-nuc Longest ORF\t"+
+//                "Rank Best Tri-nuc\t"+
+                "Best Di-nuc P-value\t" +
+//                "Rank Best Di-nuc\t"+
+                "P-value of ORF lengths frame 1\t" +
+                "P-value of ORF lengths frame 2\t" +
+                "P-value of ORF lengths frame 3\t" +
+                "P-value of ORF lengths frame 4\t" +
+                "P-value of ORF lengths frame 5\t" +
+                "P-value of ORF lengths frame 6\t" +
+                "Tri-nuc P-value Frame 1\t"+
+                "Tri-nuc P-value Frame 2\t"+
+                "Tri-nuc P-value Frame 3\t"+
+                "Di-nuc P-value Frame 1\t"+
+                "Di-nuc P-value Frame 2\t"+
                 "Rank Total\t"+
-                "Amino Acid Seq\t"+
-                "mRNA seq\t"+
+                "Amino Acid Seq of Longest ORF Frame\t"+
+                "mRNA seq of Longest ORF Frame\t"+
 //                "Original seq"+
                 "\n";
         try (
-                FileWriter writerCSV = new FileWriter(input+"_DMM.csv");
+                FileWriter writerCSV = new FileWriter(input+"_DMM.csv")
 //                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
         ) {
             writerCSV.write(labelString);

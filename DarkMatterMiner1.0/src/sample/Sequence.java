@@ -5,14 +5,15 @@ class Sequence {
     //** Attributes of sequence
     private String name, rawSeq,translatedAA, transcribedmRNA;
 //    String microsatelliteMotif;
-    private short length;
+    private int length;
     private byte frameWithLongestORF;
-    private int rankTot, rankTri,rankDi, rankOrf, rankBestORFframeTri;
+    private float rankTot;
+//            , rankTri,rankDi, rankOrf, rankBestORFframeTri;
 //    short numSSRrepeats, sSRstartloci,
     private float gcContent, dinucleotidePValue, trinucelotidePValue, orfLengthPValue, trinuc1, trinuc2, trinuc3, triNucFreqOfLongestORFframe, dinuc1, dinuc2, orfLenP1, orfLenP2,orfLenP3,orfLenP4,orfLenP5,orfLenP6;
 //    private boolean microsatellite;
 
-    Sequence(String name, String raw, short len){
+    Sequence(String name, String raw, int len){
         //** initialises Sequence objects with basic information before statistical analysis
         this.name = name;
         rawSeq = raw;
@@ -23,14 +24,13 @@ class Sequence {
     String getSequence(){
         return (name + "\t" + length + "\t" + gcContent + "\t" +
                 frameWithLongestORF + "\t"+
-                orfLengthPValue + "\t"+ rankOrf + "\t"+
-                orfLenP1+ "\t" +orfLenP2+ "\t" + orfLenP3+ "\t" +
-                orfLenP4+ "\t" +orfLenP5+ "\t" +orfLenP6+ "\t" +
-                triNucFreqOfLongestORFframe + "\t"+ rankBestORFframeTri +"\t"+
-                trinucelotidePValue+ "\t"  + rankTri + "\t"+
-                trinuc1+ "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
-                dinucleotidePValue+ "\t" + rankDi + "\t"+
-                dinuc1+ "\t"  +dinuc2 + "\t"+ rankTot+"\t"+
+                orfLengthPValue + "\t"+triNucFreqOfLongestORFframe + "\t"+
+                trinucelotidePValue + "\t"  +
+//                rankBestORFframeTri +"\t"+ rankTri + "\t"+ rankOrf + "\t"+rankDi + "\t"+
+                dinucleotidePValue + "\t" +
+                orfLenP1 + "\t" +orfLenP2+ "\t" + orfLenP3+ "\t" + orfLenP4+ "\t" +orfLenP5+ "\t" +orfLenP6+ "\t" +
+                trinuc1 + "\t"  + trinuc2+ "\t"  +trinuc3+ "\t"  +
+                dinuc1 + "\t" + dinuc2 + "\t"+ rankTot+"\t"+
                 translatedAA+"\t"+transcribedmRNA
 //                +"\t"+rawSeq
         );
@@ -48,43 +48,47 @@ class Sequence {
         return frameWithLongestORF;
     }
 
-    short getLength(){
+    int getLength(){
         return length;
     }
 
-    float getDinucleotidePValue() {
-        return dinucleotidePValue;
+//    float getDinucleotidePValue() {
+//        return dinucleotidePValue;
+//    }
+//
+//    float getTrinucelotidePValue() {
+//        return trinucelotidePValue;
+//    }
+//
+//    float getOrfLengthPValue() {
+//        return orfLengthPValue;
+//    }
+
+//    void setRankTri(int rankTri) {
+//        this.rankTri = rankTri;
+//    }
+//
+//    void setRankBestORFframeTri( int rankBestORFframeTri) {
+//        this.rankBestORFframeTri = rankBestORFframeTri;
+//    }
+//
+//    void setRankDi(int rankDi) {
+//        this.rankDi = rankDi;
+//    }
+//
+//    void setRankOrf(int rankOrf) {
+//        this.rankOrf = rankOrf;
+//    }
+//
+    void setRankTot(){
+        rankTot = (triNucFreqOfLongestORFframe + dinucleotidePValue+orfLengthPValue);
     }
 
-    float getTrinucelotidePValue() {
-        return trinucelotidePValue;
-    }
+//    float getRankBestORFframeTri(){
+//        return rankBestORFframeTri;
+//    }
 
-    float getOrfLengthPValue() {
-        return orfLengthPValue;
-    }
-
-    void setRankTri(int rankTri) {
-        this.rankTri = rankTri;
-    }
-
-    void setRankBestORFframeTri( int rankBestORFframeTri) {
-        this.rankBestORFframeTri = rankBestORFframeTri;
-    }
-
-    void setRankDi(int rankDi) {
-        this.rankDi = rankDi;
-    }
-
-    void setRankOrf(int rankOrf) {
-        this.rankOrf = rankOrf;
-    }
-
-    void setRankTot() {
-        this.rankTot =  rankDi + rankTri + rankOrf;
-    }
-
-    int getRankTot() {
+    float getRankTot() {
         return rankTot;
     }
     //    public void setMicrosatellite(boolean microsatellite) {
