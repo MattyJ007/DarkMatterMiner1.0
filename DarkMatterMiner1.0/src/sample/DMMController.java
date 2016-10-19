@@ -10,12 +10,12 @@ import java.io.InputStreamReader;
 public class DMMController {
     private static boolean start; //** variable that prevents launching Metagenome if User settings aren't correct
     private static boolean secureRandom; //** Allows user to use either Random() or SecureRandom()
-    private static double topResults = 0.005; //** Allows user to choose number of seqs for end fasta file
+    private static double topResults = 0.001; //** Allows user to choose number of seqs for end fasta file
     private static int motifRepeats = 4;
     private static int permutations = 1000;
     private static int minMotifLen = 2;
-    private static int maxMotifLen = 10;
-    private static int ignoreShortSeq = 20;
+    private static int maxMotifLen = 50;
+    private static int ignoreShortSeq = 50;
     private static String inputFolder;
     private final ProgressCheck progressFile = new ProgressCheck();
     private final ProgressCheck progressFolder = new ProgressCheck();
