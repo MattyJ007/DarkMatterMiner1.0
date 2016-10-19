@@ -1,15 +1,15 @@
-gmat.pl was run. Current time is Tue Oct 18 17:35:06 2016
-In this run, parameters setting are: -r 2 -m 3 -x 50 -s 0 -i C:\Users\Matt\Desktop\NoSSR2\Rain6.fas
+gmat.pl was run. Current time is Wed Oct 19 15:04:17 2016
+In this run, parameters setting are: -r 4 -m 2 -x 30 -s 0 -i C:\Users\Matt\Desktop\Test1\C1-3noSSR.fas
 Sequences were successfully formatted. 
-file: C:\Users\Matt\Desktop\NoSSR2\Rain6.fas.fms.
-file: C:\Users\Matt\Desktop\NoSSR2\Rain6.fas.sat1
+file: C:\Users\Matt\Desktop\Test1\C1-3noSSR.fas.fms.
+file: C:\Users\Matt\Desktop\Test1\C1-3noSSR.fas.sat1
 
-gmat.pl was run. Current time is Tue Oct 18 17:35:08 2016
+gmat.pl was run. Current time is Wed Oct 19 15:04:17 2016
 Microsatellite data were provided.
-file:  C:\Users\Matt\Desktop\NoSSR2\Rain6.fas.ssr
+file:  C:\Users\Matt\Desktop\Test1\C1-3noSSR.fas.ssr
 
-gmat.pl was run. Current time is Tue Oct 18 17:38:44 2016
+gmat.pl was run. Current time is Wed Oct 19 15:04:19 2016
 statistic results were provided.
-file:  C:\Users\Matt\Desktop\NoSSR2\Rain6.fas.sat2
+file:  C:\Users\Matt\Desktop\Test1\C1-3noSSR.fas.sat2
 
-gmat.pl was run. Current time is Tue Oct 18 17:38:51 2016
+gmat.pl was run. Current time is Wed Oct 19 15:04:19 2016

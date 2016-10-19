@@ -67,7 +67,7 @@ public class DMMController {
     }
 
     public void helpDMM(){
-        userOutput.setText("HELP!!");
+        userOutput.setText("HELP:\nGMATo guide is called GMATo_help.pdf and is located in the folder along with DMM.\nDMM has no help file yet.\nContact: dckmat002@myuct for queries.");
     }
 
     private static void setStart(boolean startT) {

@@ -394,11 +394,11 @@ class Metagenome {
                 "\n";
         try (
                 FileWriter writerCSV = new FileWriter(input+"_DMM.csv");
-                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
+//                FileWriter writerFas = new FileWriter(input+"DMM_BestPotentialSeqs.fas")
         ) {
             writerCSV.write(labelString);
             for(int best = 0; best < ( sequences.size() * DMMController.getTopResults()); best++){
-                writerFas.write(sequences.get(best).getFasSeqInfo());
+//                writerFas.write(sequences.get(best).getFasSeqInfo());
                 translate(sequences.get(best));
                 transcribe(sequences.get(best));
             }
