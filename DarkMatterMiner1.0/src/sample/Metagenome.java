@@ -177,9 +177,6 @@ class Metagenome {
     private static final Map<String, Character> codonsMap;
     static {
         codonsMap = new HashMap<>();
-        codonsMap.put("UUU", 'F');
-        codonsMap.put("UUC", 'F');
-        codonsMap.put("UUA", 'L');
         codonsMap.put("TTT", 'F');
         codonsMap.put("TTC", 'F');
         codonsMap.put("TTA", 'L');
