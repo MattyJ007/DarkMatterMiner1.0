@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DarkMatterMiner1.0:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DarkMatterMiner1_0_jar</output-path>
+    <root id="archive" name="DarkMatterMiner1.0_jar.jar">
+      <element id="module-output" name="DarkMatterMiner1.0" />
+    </root>
+  </artifact>
+</component>
